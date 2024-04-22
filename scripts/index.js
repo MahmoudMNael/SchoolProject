@@ -11,6 +11,10 @@ if(!localStorage.getItem('RegisteredUsers')){
     localStorage.setItem("RegisteredUsers", JSON.stringify(classes));
     }
 
+    if(!localStorage.getItem('pendingAccounts')){
+        localStorage.setItem("pendingAccounts", JSON.stringify([]));
+    }
+
 //registration related
 
 
@@ -31,7 +35,7 @@ const userRoleInput = document.getElementsByName("role");
 
     for(let i=0;RegisteredUsers.length>i;++i){
         if(RegisteredUsers[i].email==duplaciteEmail){
-            alert("email already in usage");
+            alert("email already in usage!");
             userEmailInput.value = '';
             valid = false;
             break;
@@ -39,21 +43,21 @@ const userRoleInput = document.getElementsByName("role");
     }
 
     if(userPassInput.value!=userConfirmPassInput.value){
-        alert("passwords dont match");
+        alert("passwords dont match!");
         userConfirmPassInput.value = '';
     }
 
     else if(valid){
-        let RegisteredUsers = JSON.parse(localStorage.getItem('RegisteredUsers'));
+        let pendingAccounts = JSON.parse(localStorage.getItem('pendingAccounts'));
         if(userRoleInput[0].checked){
             var role = "student"
         }
         else {
             var role = "teacher";
         }
-        const newUser = new User(userNameInput.value,userEmailInput.value,userPassInput.value,role,RegisteredUsers.length)
-        RegisteredUsers.push(newUser);
-        localStorage.setItem('RegisteredUsers',JSON.stringify(RegisteredUsers));
+        const newUser = new User(userNameInput.value,userEmailInput.value,userPassInput.value,role,pendingAccounts.length)
+        pendingAccounts.push(newUser);
+        localStorage.setItem('pendingAccounts',JSON.stringify(pendingAccounts));
         location.reload();
     }   
 });
