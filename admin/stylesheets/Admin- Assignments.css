@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+ a{
+    text-decoration: none;
+} 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+	font-family: 'jujutsu';
+	src: url('/assets/fonts/Jujutsu\ Kaisen.ttf');
+}
+
+
+header {
+	background-color: #2f3e46;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 10%;
+}
+
+.logo {
+	font-size: 32px;
+	letter-spacing: 2px;
+	-webkit-text-stroke: 1px #d6cd81;
+	color: white;
+	font-family: 'jujutsu', sans-serif;
+}
+
+.nav__links {
+	list-style: none;
+}
+
+.nav__links li {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.nav__links li a {
+	transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+	color: #84a98c;
+}
+
+.nav__active {
+    color: #84a98c !important;
+    border-bottom: 3px solid #84a98c;
+    padding-bottom: 12px;
+    pointer-events: none;
+}
+
+.nav__btn {
+	padding: 9px 25px;
+	background-color: rgba(0, 136, 169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.nav__btn:hover {
+	background-color: #84a98c;
+}
+
+.nav__li,
+.nav__a,
+.nav__btn {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: #edf0f1;
+	text-decoration: none;
+	background-color: #ffffff00;
+}
+
+#colorModeIcon {
+	min-width: 24px;
+}
+.content-classes{
+    margin-top: 20px;
+    margin-left: 24px;
+    padding-left: 8px;
+    margin-right: 24px;
+    height: 37px;
+    border-bottom: 1px solid #84a98c;
+}
+
+.secNav{
+    width: calc(100%/2);
+    display: inline-block;
+  
+  }
+  
+  .secNav a{
+    text-decoration: none;
+    color: black;
+    margin-left:10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-size: bold;
+  }
+  .secNav a:hover{
+    color: #84a98c;
+  }
+  
+  h1{
+      display: inline-block;
+      color: #eeeeee91;
+  }
+  
+  .assi-txt2{
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 10px 10px 12.5%;
+    width: 75%;
+    height: auto;
+    border: solid 1px black;
+    border-radius: 10px;
+    color: black;
+    display: inline-block;
+    box-shadow: 5px 5px 10px 6px #00000030;
+    padding: 15px;
+  }
+  
+  
+  img{
+    border-radius: 50%;
+    height: 60px;
+  }
+  
+  .username{
+    display: inline-block;
+    font-size: 30px;
+    color: black;
+    position: relative;
+    left: 5px;
+    bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .username a{
+      color: black;
+  }
+  
+  .assi-content{
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .date {
+    width: 150px;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+  
+.verification {
+    color: red;
+}
+

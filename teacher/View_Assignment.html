@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assingment</title>
+  <link rel="stylesheet" href="View_Assignment.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+  <div id="blur">
+    <!-- Start of Nav -->
+    <header>
+      <span class="logo">JuJuTsu ScHooL</span>
+      <nav>
+          <ul class="nav__links">
+              <li class="nav__li">
+                  <a class="nav__a" href="#">Tasks</a>
+              </li>
+              <li class="nav__li"><a class="nav__a" href="#">Classes</a></li>
+              <li class="nav__li"><a class="nav__a" href="#">Profile</a></li>
+          </ul>
+      </nav>
+      <div>
+          <button class="nav__btn" id="colorModeBtn">
+              <i id="colorModeIcon" class="fa-solid fa-moon"></i>
+          </button>
+          <button class="nav__btn" id="logout" >Logout</button>
+      </div>
+    </header>
+    <!-- End of Nav-->
+
+
+    <!-- Header of Details -->
+    <div class="Header">
+      <img src="/Res/Icons/Logo_Assignments.png" alt="">
+      <div class="assignment">
+        <H1>Math:</H1>
+        <p><span>Published at:</span> 3/10/2024</p>
+        <p><span>Due Time:</span> 3/15/2024</p>
+      </div>
+      <!--
+      <div class="classroom">
+        <h3>Classroom: Web_Technology</h3>
+      </div>
+      <div class="doctor_name">
+        <h2>BY: Dr/Neamat El Tazi</h2>
+      </div>
+      -->
+      <!--
+        <div class="Date">
+        <p>
+          <p>Started From: 3/10/2024.</p>
+          <p>Due Time: 3/15/2024.</p>
+        </p>
+        </div>
+      -->
+    </div>
+    <!-- End Of Header -->
+
+
+    <!-- Content of Details -->
+    <div class="Content" id="Content">
+      <p>
+        Here is the details of assignment Math.
+      </p>
+    </div>
+    <br>
+    <!-- End of Content -->
+
+
+    <!-- Buttons Edit & Delete -->
+    <div class="btns">
+      <div id="edit_btn">
+        <input type="button" value="Edit" id="edt_btn">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Delete" id="dlt_btn">
+      </div>
+    </div>
+    <!-- End of Buttons -->
+
+
+    <!-- Comment Section -->
+    <div class="head_comment">
+      Comments Section
+    </div>
+    <div class="comment_section"></div>
+    <!-- End of Comment Section -->
+  </div>
+
+
+  <!-- Pop Up Message -->
+  <!--
+    <div id="editing_section">
+    <div class="title_here">
+      Enter Your Edit of The Assingment Title Here
+      <br>
+      <input type="text" class="text_edit_title">
+    </div>
+    <div class="detail_here">
+      Enter Your Edit of The Assingment Details Here
+      <br>
+      <input type="text" class="text_edit_detail">
+    </div>
+    <div class="due_here">
+      Change The Due Time Here.
+      <br>
+      <input type="date" name="Due_Date" id="due_time">
+    </div>
+    <div class="btns_edit">
+      <input type="button" value="Confirm" id="cnfrm">
+      <div class="vertical_line"></div>
+      <input type="button" value="Decline" id="dcln" onclick="decline()">
+    </div>
+    </div>
+  -->
+  <!-- End of Pop Up -->
+
+  <!-- Pop UP 2 -->
+  <div id="Container">
+    <!-- <input type="text" name="Title" id="Title" placeholder="Title">
+    <input type="text" name="Content" id="Content" placeholder="Content"> -->
+    <h2>Enter Details Here</h2>
+    <textarea name="Title" id="Title"></textarea>
+    <label for="Title" id="label1">Title</label>
+    <textarea name="Content" id="Content2"></textarea>
+    <label for="Content" id="label2">Content</label>
+    <h4>Due Time</h4>
+    <input type="date" name="Date" id="Date" required>
+    <div class="Buttons">
+      <div id="edit_btn">
+        <input type="submit" value="Save" id="Accept">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Cancel" id="Decline">
+      </div>
+    </div>
+  </div>
+  <!-- End of pop up 2-->
+  <script src="View_Assignment.js" type="module"></script>
+  <script src="navbar.js"></script>
+  
+</body>
+</html>

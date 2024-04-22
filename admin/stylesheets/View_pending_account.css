@@ -1,0 +1,346 @@
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #0D1B2A;
+}
+
+/* Basics End */
+
+.type {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 50px;
+  margin-left: 26%;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+#student_request {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-top-left-radius:10px ;
+  border-bottom-left-radius:10px ;
+}
+
+#student_request:hover {
+  filter: brightness(80%);
+}
+
+#teacher_request {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-top-right-radius:10px ;
+  border-bottom-right-radius:10px ;
+}
+
+#teacher_request:hover {
+  filter: brightness(80%);
+}
+
+
+/* Type end */
+
+.card img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+#cards {
+  display: block;
+  width: 900px;
+  height: max-content;
+  padding: 20px;
+  margin-left: 8px;
+}
+
+.view_student {
+  border: solid;
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+span {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 25px;
+}
+
+.card {
+  display: flex;
+  border: solid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 40px;
+  width: 800px;
+  min-height: 60px;
+  height: max-content;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  transition-duration: 0.5s;
+}
+
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+}
+
+.text {
+  font-size: 20px;
+  width: max-content;
+  max-width: 600px;
+  height: max-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+}
+
+.card img.accept {
+  width: 30px;
+  height: 30px;
+} 
+
+.card img.decline {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+}
+
+/* Requests student */
+
+#cards_teacher {
+  display: none;
+  justify-content: center;
+  width: 800px;
+  height: max-content;
+  padding: 10px;
+  margin-left: 40px;
+}
+
+.view_teacher {
+  border: solid;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 25px;
+}
+
+.card_teacher {
+  display: flex;
+  border: solid;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  min-height: 60px;
+  height: max-content;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  transition-duration: 0.5s;
+}
+
+.card_teacher img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.left_teacher {
+  display: flex;
+}
+
+.right_teacher {
+  display: flex;
+}
+
+.text_teacher {
+  font-size: 20px;
+  width: max-content;
+  max-width: 600px;
+  height: max-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+}
+
+.card_teacher img.accept_teacher {
+  width: 30px;
+  height: 30px;
+} 
+
+.card_teacher img.decline_teacher {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+}
+
+/* Requests teacher */
+
+
+.control_panel {
+  margin-top: 12px;
+  height: 300px;
+}
+
+
+aside {
+  width: 250px;
+  height: 150px;
+}
+
+.activated {
+  display: flex;
+  border: solid;
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 50px;
+  transition-duration: 0.5s;
+}
+
+.activated:hover {
+  height: 80px;
+}
+
+.active_text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.accepted {
+  display: flex;
+  border: solid;
+  justify-content: center;
+  height: 50px;
+  transition-duration: 0.5s;
+}
+
+.accepted:hover {
+  height: 80px;
+}
+
+.accepted_text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.declined {
+  display: flex;
+  border: solid;
+  justify-content: center;
+  height: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  transition-duration: 0.5s;
+}
+
+.declined:hover {
+  height: 80px;
+}
+
+.declined_text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.no_teacher {
+  display: flex;
+  border: solid;
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 50px;
+  height: 50px;
+  transition-duration: 0.5s;
+}
+
+.no_teacher:hover {
+  height: 80px;
+}
+
+.no_teacher_text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.no_student {
+  display: flex;
+  border: solid;
+  justify-content: center;
+  height: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
+  transition-duration: 0.5s;
+}
+
+.no_student:hover {
+  height: 80px;
+}
+
+.no_student_text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.activebar {
+  background-color: #84A98C;
+}

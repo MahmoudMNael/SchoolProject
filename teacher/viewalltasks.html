@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tasks</title>
+		<link rel="stylesheet" href="./stylesheets/viewalltasks.css" />
+		<link rel="stylesheet" href="../stylesheets/navbar.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<!-- NAVBAR -->
+		<header>
+			<span class="logo">JuJuTsu ScHooL</span>
+			<nav>
+				<ul class="nav__links">
+					<li class="nav__li">
+						<a class="nav__a nav__active" href="./viewalltasks.html">Tasks</a>
+					</li>
+					<li class="nav__li"><a class="nav__a" href="ClassAll.html">Classes</a></li>
+					<li class="nav__li"><a class="nav__a" href="#">Profile</a></li>
+				</ul>
+			</nav>
+			<div>
+				<button class="nav__btn" id="colorModeBtn">
+					<i id="colorModeIcon" class="fa-solid fa-moon"></i>
+				</button>
+				<button class="nav__btn">Logout</button>
+			</div>
+		</header>
+		<!-- END NAVBAR -->
+
+		<section class="main">
+			<div class="section__header">
+				<h1 id="main__title">Tasks</h1>
+				<ul class="section__links">
+					<li class="section__li">
+						<a class="section__a section__active" id="pendingTasks">Pending</a>
+					</li>
+					<li class="section__li">
+						<a class="section__a" id="completedTasks">Completed</a>
+					</li>
+				</ul>
+
+				<div class="search-box">
+					<button class="btn-search">
+						<i class="fas fa-search"></i>
+					</button>
+					<input
+						type="text"
+						class="input-search"
+						id="search__input"
+						placeholder="Search your tasks!"
+					/>
+				</div>
+			</div>
+			<hr />
+
+			<div id="tasks__container"></div>
+		</section>
+
+		<script src="./scripts/viewalltasks.js" type="module" defer></script>
+		<script src="../scripts/navbar.js" defer></script>
+	</body>
+</html>

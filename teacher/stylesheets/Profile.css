@@ -1,0 +1,54 @@
+
+.Profile_Photo {
+	
+	width: 300px;
+	height: auto;
+	margin: 24px 64px 24px 24px;
+	padding: 16px;
+	border:2px solid #CAD2C5;
+	
+
+
+
+}
+.profile_Section{	
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	margin-top: 64px;
+}
+
+
+.Your_profile{
+	padding-left: 64px;
+	margin-bottom: 24px;
+}
+
+#Hrule{
+	width: 80%;
+	margin-left: 64px;
+	margin-right: 50px;
+	margin-bottom: 24px;
+}
+.Details{
+	
+	width: 70%;
+	margin-left: 80px;	
+	box-shadow: 1px 1px 2px grey;
+	display: flex;
+	border: 2px solid #52796F;
+	
+}
+.content{
+	/* position: relative; */
+	padding: 50px;
+	margin-left: 64px;
+	font-size: larger;
+	display: flex;
+	align-items: center;
+}
+.content ul{
+	list-style-type: none;
+}
+.content li{
+	margin-bottom: 8px;
+}

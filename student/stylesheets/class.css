@@ -1,0 +1,259 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--primaryBG);
+  transition: 0.5s;
+  display:flex;
+  flex-direction: column;
+}
+
+.darkMode {
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  margin-left: 16px;
+  border-radius: 50%;
+  padding: 8px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.darkMode:hover {
+  background-color: var(--primary);
+}
+
+.Profile {
+  width: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.logoutbtn {
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.5s;
+  color: var(--fontcolor);
+  background-color: var(--primary);
+  font-weight: bold;
+}
+
+.logoutbtn:hover {
+  background-color: rgb(209, 61, 61);
+  color: black;
+}
+
+.UserPhoto {
+  border: 1px solid gray;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primaryBG);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.maindiv {
+  min-height: 800px;
+  min-width: 95%;
+  max-width: 95%;
+  margin-top: 48px;
+  border-radius:10px ;
+  margin-left: 20px;
+  background-color: var(--primaryBG);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  transition: 0.5s;
+  padding: 16px;
+}
+
+.classes {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 16px;
+  color: var(--fontcolor);
+}
+
+.addclass {
+  background-color: var(--secondaryBG);
+  border: none;
+  transition: 0.5s;
+  color: var(--fontcolor);
+  border-radius: 30px;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.addclass:hover {
+  background-color: var(--primary);
+}
+
+.class {
+  width: 80%;
+  background-color: var(--primaryBG);
+  color: var(--fontcolor);
+  height: 80px;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: 0px 0px 4px black;
+}
+
+.class:hover {
+  background: var(--primary);
+  padding: 25px;
+}
+
+.class .words {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-left: 8px;
+  margin-bottom: -4px;
+}
+
+.class .words .line {
+  font-weight: bold;
+}
+
+.class .words .creater {
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
+.classimg {
+  height: 80%;
+  border: 1px black solid;
+  border-radius: 50%;
+  margin: 8px;
+  background-color: gray;
+}
+
+.sidediv {
+  min-width: 300px;
+  padding: 20px;
+  min-height: 400px;
+  height: fit-content;
+  max-height: 600px;
+  overflow-y: scroll;
+  display: grid;
+  row-gap: 20px;
+  background-color: var(--secondaryBG);
+  margin-right: 20px;
+  transition: 0.5s;
+  border: 4px var(--secondaryBG) solid;
+}
+
+.addClass {
+  width: 65%;
+  height: 75%;
+  background-color: var(--secondaryBG);
+  border-radius: 30px;
+  box-shadow: 0px 0px 3000px inset black;
+  box-shadow: 0px 0px 3000px black;
+  position: fixed;
+  margin-left: 15%;
+  visibility:hidden;
+  display: block;
+  border: var(--primary) solid 20px;
+  opacity: 100%;
+  transition: 0.5s;
+  margin-top: 5%;
+}
+
+#closePopupbtn {
+  width: 24px;
+  height: 24px;
+  float: right;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 16px;
+  border-radius: 50%;
+}
+.addClass .inputform {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35%;
+  row-gap: 20px;
+  margin-top: -150px;
+}
+
+.addClass .inputform .input {
+  width: 400px;
+  height: 40px;
+  padding-left: 8px;
+  font-size: large;
+}
+
+.formparagraph {
+  margin: 24px;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.classformimg {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin-top: 80px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-left: 24px;
+  border: 2px black solid;
+}
+
+.submitbtn {
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--primaryBG);
+  font-weight: bold;  
+  margin-left: 140px;
+  margin-top: 16px;
+  transition: 0.5s;
+}
+
+.submitbtn:hover {
+  background-color: var(--primary);
+}
+
+.uploadimg {
+  margin-left: 140px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primaryBG);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navColor);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

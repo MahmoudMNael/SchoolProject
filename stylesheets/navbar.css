@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+	font-family: 'jujutsu';
+	src: url('../../assets/fonts/Jujutsu\ Kaisen.ttf');
+}
+
+header {
+	background-color: #2f3e46;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 10%;
+}
+
+.logo {
+	font-size: 32px;
+	letter-spacing: 2px;
+	-webkit-text-stroke: 1px #d6cd81;
+	color: white;
+	font-family: 'jujutsu', sans-serif;
+}
+
+.nav__links {
+	list-style: none;
+}
+
+.nav__links li {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.nav__links li a {
+	transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+	color: #84a98c;
+}
+
+.nav__active {
+	color: #84a98c !important;
+}
+
+.nav__btn {
+	padding: 9px 25px;
+	background-color: rgba(0, 136, 169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+.nav__btn:hover {
+	background-color: #84a98c;
+}
+
+.nav__li,
+.nav__a,
+.nav__btn {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: #edf0f1;
+	text-decoration: none;
+	background-color: #ffffff00;
+}
+
+#colorModeIcon {
+	min-width: 24px;
+}
+
+
+::-webkit-scrollbar {
+	width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: var(--primaryBG);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: var(--navColor);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background: var(--primary);
+  }
+  

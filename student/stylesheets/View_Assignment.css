@@ -1,0 +1,432 @@
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 42px;
+  height: 42px;
+}
+
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #0D1B2A;
+}
+
+#blur.active {
+  filter: blur(20px);
+}
+
+/* end of basics */
+
+.profile_user {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+  margin-top: 2px;
+}
+
+.logout_img {
+  width: 15px;
+  height: 15px;
+  margin-right: 2px;
+  margin-top: 2px;
+}
+
+.Header {
+  display: flex;
+  padding: 8px;
+  margin-left: 65px;
+  gap: 10px;
+}
+
+.assignment {
+  display: solid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.assignment p {
+  font-size: smaller;
+  color: #354f52;
+}
+
+.classroom {
+  display: solid;
+  width: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 40px;
+}
+
+.doctor_name {
+  display: solid;
+  width: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.Content {
+  background-color: white;
+  font-size: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width:90%;
+  height: max-content;
+  word-spacing: 3px;
+  padding: 0.8%;
+  box-shadow: 0.5px 0.5px 5px;
+}
+
+/* End of the content */ 
+
+.Submit_Button {
+  border: solid;
+  position: absolute;
+  left: 78%;
+  top: 40%;
+  width: 250px;
+  height: 80px;
+  background-color: white;
+  transition-duration: 0.3s;
+}
+
+.Upload {
+  display: none;
+  text-align: center;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  padding: 5px;
+}
+
+.Upload a {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.Submit_Button:hover {
+  width: 250px;
+  height: 160px;
+}
+
+.Submit_Button:hover .Upload{
+  border: solid;
+  display: block;
+  opacity: 1;
+}
+
+.Submit_Button .drive_google {
+  width: 180px;
+  height: 20px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Submit_Button p {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
+  font-weight: bold;
+}
+
+.Submit_Button input {
+  display: block;
+  margin-top: 20px;
+  width: 100px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* End of Submit Button */
+
+#Buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+#cmnt_btn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#cmnt_btn:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#SubmitBtn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#SubmitBtn:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+/* Comment button end */
+
+h2 {
+  text-align: center;
+  color: #52796F;
+}
+
+#Container {
+  border: solid 1px black;
+  border-radius: 20px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc((100%/2) - 125px);
+  margin-left: calc((100%/2) - 400px);
+  width: 800px;
+  height: 250px;
+  padding: 20px;
+}
+
+#Container2 {
+  border: solid 1px black;
+  border-radius: 20px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc((100%/2) - 125px);
+  margin-left: calc((100%/2) - 400px);
+  width: 800px;
+  height: 250px;
+  padding: 20px;
+}
+
+#Title , #Title2 {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Title:focus,  
+#Title2:focus {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Title:hover,
+#Title2:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+label {
+  position: absolute;
+  top: 85px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.Focusing + #label1,
+.Focusing + #label2 {
+  top: 60px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+.Buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#Accept {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius : 10px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Accept:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#Accept2 {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius : 10px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Accept2:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#Decline {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Decline:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#Decline2 {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Decline2:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+/* comment add section end */
+
+
+.comment_section {
+  display: block;
+  width: 900px;
+  height: 250px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+
+.head_comment {
+  text-align: center;
+  font-size: 32px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile_user {
+  width: 20px;
+  height: 20px;
+  margin-top: -1px;
+  margin-right: 5px;
+}
+
+.commenter {
+  display: flex;
+  margin-top: auto;
+}
+
+.comment_content {
+  margin-top: 8px;
+  margin-left: 25px;
+}
+
+.card_comment {
+  display: block;
+  align-items: center;
+  min-height: 30px;
+  height: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  width: 800px;
+  border-radius: 10px;
+  background-color: var(--primaryBG);
+  font-size: 15px;
+  padding: 10px;
+  transition-duration: 0.5s;
+  box-shadow: 0.5px 0.5px 5px;
+}
+
+/* comment end */
+
+.Contact {
+  display: block;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 70px;
+  width: 300px;
+  margin-top: -30px;
+}
+
+.Contact img {
+  width: 30px;
+  height: 30px;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+.verification {
+  color: red;
+}

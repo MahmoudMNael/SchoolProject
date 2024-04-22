@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assingment</title>
+  <link rel="stylesheet" href="View_Assignment.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+  <div id="blur">
+    <!-- Start of Nav -->
+    <header>
+      <span class="logo">JuJuTsu ScHooL</span>
+      <nav>
+          <ul class="nav__links">
+              <li class="nav__li"><a class="nav__a" href="#">Classes</a></li>
+              <li class="nav__li"><a class="nav__a" href="#">Profile</a></li>
+          </ul>
+      </nav>
+      <div>
+          <button class="nav__btn" id="colorModeBtn">
+              <i id="colorModeIcon" class="fa-solid fa-moon"></i>
+          </button>
+          <button class="nav__btn" id="logout">Logout</button>
+      </div>
+    </header>
+    <!-- End of Nav-->
+
+    <!-- Header of Details -->
+    <div class="Header">
+      <img src="/Res/Icons/Logo_Assignments.png" alt="">
+      <div class="assignment">
+        <H1>Math:</H1>
+        <p><span>Published at:</span> 3/10/2024</p>
+        <p><span>Due Time:</span> 3/15/2024</p>
+      </div>
+    </div>
+    <!-- End of Header -->
+
+    <!-- Content of Details -->
+    <div class="Content" id="Content">
+      <p>
+        Here is The Details of assignment Math.
+      </p>
+    </div>
+    <br>
+    <!-- End of Content -->
+
+    <!-- Submit Section 
+    <div class="Submit_Button">
+      <p>
+        Submit Your Work Here:
+      </p>
+      <div class="Upload"><a href="www.googledrive.com">Upload Your Work Link Here</a><input type="text" class="drive_google"></div>
+      <input type="button" value="Submit">
+    </div>
+    End of Submit Section -->
+    
+    <br>
+
+    <!-- Contact -->
+    <div class="Contact">
+      Teacher's Contacts:
+      <br>
+      <a href="mailto:"><img src="/Res/Icons/Email.png" alt=""></a>
+      <a href="http://whatsapp.com"><img src="/Res/Icons/whatsapp.png" alt=""></a>
+    </div>
+    <!-- End of the contact -->
+
+    <!-- Comment Section -->
+    <div id="Buttons">
+      <button id="cmnt_btn">Add Comment</button>
+      <button id="SubmitBtn">Submit Work</button>
+    </div>
+    
+    <div class="head_comment">
+      Comments Section
+    </div>
+    <div class="comment_section"></div>
+  <!-- End of Comment Section -->
+  </div>
+
+  <!-- Pop Up Section -->
+  <div id="Container">
+    <h2>Add Your Comment</h2>
+    <textarea name="Title" id="Title"></textarea>
+    <label for="Title" id="label1">Write Your Comment Here</label>
+    <div class="Buttons">
+      <div id="edit_btn">
+        <input type="button" value="Save" id="Accept">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Cancel" id="Decline" >
+      </div>
+    </div>
+  </div>
+
+  <div id="Container2">
+    <h2>Add Your Link For Your Work</h2>
+    <textarea name="Title" id="Title2"></textarea>
+    <label for="Title" id="label2">Enter Your Link Here</label>
+    <div class="Buttons">
+      <div id="edit_btn">
+        <input type="button" value="Save" id="Accept2">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Cancel" id="Decline2">
+      </div>
+    </div>
+  </div>
+  <!-- End of Pop up Section -->
+  
+  <script src="View_Assignment.js" type="module"></script>
+  <script src="navbar.js"></script>
+</body>
+</html>
