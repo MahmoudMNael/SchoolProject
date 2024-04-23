@@ -12,7 +12,7 @@ moddata.forEach((item) => {
         AdminListEditor.innerHTML+=`<li><img src="../assets/images/simple_profile_photo.png" alt="profile photo">${item.name}</li>`
     }
     else if (item.role==='teacher'){
-        TeacherListEditor.innerHTML+=`<li><img src=".../assets/images/simple_profile_photo.png" alt="profile photo">${item.name}</li>`
+        TeacherListEditor.innerHTML+=`<li><img src="../assets/images/simple_profile_photo.png" alt="profile photo">${item.name}</li>`
     }
     else{
         StudentListEditor.innerHTML+=`<li><img src="../assets/images/simple_profile_photo.png" alt="profile photo">${item.name}</li>`
