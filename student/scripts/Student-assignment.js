@@ -1,4 +1,4 @@
-import { Assignment } from "../Models/Assignment.js";
+import { Assignment } from "/models/Assignment.js";
 
 let detail = document.querySelector('Content');
 if (!localStorage.getItem('details')) {
@@ -50,7 +50,7 @@ assiTxt.innerHTML='';
 for(let i of Assignments){
   assiTxt.innerHTML+=`
   <div class="assi-txt2" data-set-id="${i.id}">
-  <img src="user-icon.jpg">
+  <img src="/assets/images/simple_profile_photo.png">
   <div class="username" >
       <a href="" id="address">${i.title}</a>
   </div>

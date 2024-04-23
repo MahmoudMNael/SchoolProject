@@ -2,13 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/Profile.css">
-    <link rel="stylesheet" href="../../assets/Navbar.css">
+    <link rel="stylesheet" href="/student/stylesheets/Profile.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <script type="module" src="../../Models/UserMod.js" defer></script>
 
     <title>
         my profile
@@ -20,15 +19,15 @@
         <span class="logo">JuJuTsu ScHooL</span>
         <nav>
             <ul class="nav__links">
-                <li class="nav__li"><a class="nav__a" href="#">Classes</a></li>
-                <li class="nav__li"><a class="nav__a nav__active" href="#">Profile</a></li>
+                <li class="nav__li"><a class="nav__a" href="ClassAll.html">Classes</a></li>
+                <li class="nav__li"><a class="nav__a nav__active" href="StudentProfile.html">Profile</a></li>
             </ul>
         </nav>
         <div>
             <button class="nav__btn" id="colorModeBtn">
                 <i id="colorModeIcon" class="fa-solid fa-moon"></i>
             </button>
-            <button class="nav__btn">Logout</button>
+            <button class="nav__btn" id="logoutbtn">Logout</button>
         </div>
     </header>
 <!-- END NAVBAR -->
@@ -38,7 +37,7 @@
         <hr id="Hrule"> 
         <!-- photo will be edited with css later -->
         <div class = "Details">
-            <img class = "Profile_Photo" src="simple_profile_photo.png" alt="MyProfile">
+            <img class = "Profile_Photo" src="/assets/images/simple_profile_photo.png" alt="MyProfile">
             <div class="content">
                 <ul class="datalist">
                     <li><b>Full name :</b></li>
@@ -50,6 +49,6 @@
             </div>
         </div>
     </div>
-    <script src = "../../assets/Navbar.js"></script>
-    <script src="../../assets/Profile.js" type ="module" defer></script>
+    <script src = "/scripts/DarkMode.js"></script>
+    <script src="/student/scripts/Profile.js" type ="module" defer></script>
 </body>

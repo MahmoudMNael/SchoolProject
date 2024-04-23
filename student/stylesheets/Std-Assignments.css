@@ -10,9 +10,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @font-face {
 	font-family: 'jujutsu';
-	src: url('../Jujutsu_Kaisen.ttf');
+	src: url('/assets/fonts/Jujutsu\ Kaisen.ttf');
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
 
 header {
 	background-color: #2f3e46;
@@ -124,6 +130,7 @@ header {
     display: inline-block;
     box-shadow: 5px 5px 10px 6px #00000030;
     padding: 15px;
+    cursor: pointer;
   }
   
   

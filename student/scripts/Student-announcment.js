@@ -1,5 +1,5 @@
 
-import { Announcment } from "../Models/Announcment.js";
+import { Announcment } from "/models/Announcment.js";
 
 let detailAnnounce = document.querySelector('ann-txt');
 if (!localStorage.getItem('detailAnnounce')) {
@@ -30,7 +30,7 @@ annonceTxt.innerHTML='';
 for(let i of Announcments){
   annonceTxt.innerHTML+=`
   <div class="ann-txt2"> 
-    <img src="user-icon.jpg">
+    <img src="/assets/images/simple_profile_photo.png">
     <div class="username">
       <p>${i.title}</p>
     </div>

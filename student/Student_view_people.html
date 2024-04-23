@@ -3,8 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/navbar.css">
-    <link rel="stylesheet" href="/admin/stylesheets/People.css">
-    <link rel="stylesheet" href="/admin/stylesheets/MinNav.css">
+    <link rel="stylesheet" href="/student/stylesheets/People.css">
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,15 +18,15 @@
         <span class="logo">JuJuTsu ScHooL</span>
         <nav>
             <ul class="nav__links">
-                <li class="nav__li"><a class="nav__a nav__active" href="classAll.html">Classes</a></li>
-                <li class="nav__li"><a class="nav__a" href="#">Profile</a></li>
+                <li class="nav__li"><a class="nav__a" href="classAll.html">Classes</a></li>
+                <li class="nav__li"><a class="nav__a" href="StudentProfile.html">Profile</a></li>
             </ul>
         </nav>
         <div>
             <button class="nav__btn" id="colorModeBtn">
                 <i id="colorModeIcon" class="fa-solid fa-moon"></i>
             </button>
-            <button class="nav__btn">Logout</button>
+            <button class="nav__btn" id="logoutbtn">Logout</button>
         </div>
     </header>
 <!-- END NAVBAR -->
@@ -35,10 +34,10 @@
     <div class="section__header">
         <ul class="section__links">
             <li class="section__li">
-            <a class="section__a" href="#">Announcements</a>
+            <a class="section__a" href="Std-Announcements.html">Announcements</a>
             </li>
             <li class="section__li">
-            <a class="section__a" href="#">Assignments</a>
+            <a class="section__a" href="Std-Assignments.html">Assignments</a>
             </li>
             <li class="section__li">
                 <a class="section__a" id="main__title" href="Teacher_view_people.html">People</a>
@@ -89,7 +88,8 @@
             <br>
         </div>
     </div>
-    <script type="module" src="/admin/scripts/view_people.js"></script>
+    <script type="module" src="/student/scripts/view_people.js"></script>
+    <script src="/scripts/DarkMode.js"></script>
 </body>
 
 

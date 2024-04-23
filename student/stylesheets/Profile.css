@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
 
 .Profile_Photo {
 	
@@ -6,10 +12,6 @@
 	margin: 24px 64px 24px 24px;
 	padding: 16px;
 	border:2px solid #CAD2C5;
-	
-
-
-
 }
 .profile_Section{	
 	font-family: 'Montserrat', sans-serif;

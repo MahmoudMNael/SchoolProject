@@ -1,4 +1,3 @@
-import { User } from "../data/User.js"
 let modback = JSON.parse(localStorage.getItem('user'));
 
 let contentEditor = document.querySelectorAll('.datalist li');
