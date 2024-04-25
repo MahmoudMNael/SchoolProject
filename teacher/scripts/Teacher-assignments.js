@@ -1,13 +1,7 @@
 let title = document.getElementById('Title');
 let content2 = document.getElementById('Content2');
 let isFocus = false;
-let button = document.getElementById("logout-btn");
 
-button.addEventListener('click',()=>{
-	if(confirm("Are You sure You Want To Logout")==1){
-        window.location.href="../HTML/Std-Announcements.html";
-    }
-})
 title.onfocus = function() {
   title.classList.add('Focusing');
   isFocus = true;
@@ -93,7 +87,7 @@ colorModeBtn.addEventListener('click', () => {
 	}
 });
 
-import { Assignment } from "../Models/Assignment.js";
+import { Assignment } from "/models/Assignment.js";
 
 let detail = document.querySelector('Content');
 if (!localStorage.getItem('details')) {
@@ -145,7 +139,7 @@ assiTxt.innerHTML='';
 for(let i of Assignments){
   assiTxt.innerHTML+=`
   <div class="assi-txt2" data-set-id="${i.id}">
-  <img src="user-icon.jpg">
+  <img src="/assets/images/simple_profile_photo.png">
   <div class="username" >
       <a href="" id="address">${i.title}</a>
   </div>
@@ -166,7 +160,7 @@ for (let assi of assignmentCards) {
       JSON.stringify(assiTxt.find((assi) => assi.id == id))
     );
       //we go to bota instead of all tasks
-      window.location.href = "../HTML/Std-Assignments.html";
+      window.location.href = "View_Assignment.html";
   });
 }
 

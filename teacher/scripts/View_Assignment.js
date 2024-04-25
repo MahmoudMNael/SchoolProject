@@ -128,7 +128,7 @@ for (let i of Comment_Sections){
 comment.innerHTML += `
   <div class="card_comment">
   <div class="commenter">
-    <img src="/Res/Icons/profile-user.png" alt="" class="profile_user">
+    <img src="/assets/icons/profile-user.png" alt="" class="profile_user">
     ${i.name}
   </div>
   <div class="comment_content">
@@ -142,7 +142,7 @@ let editButton = document.getElementById('edt_btn');
 
 
 
-import { Assignment } from "../Models/Assignment.js";
+import { Assignment } from "/models/Assignment.js";
 
 let detail = document.querySelector('Content');
 if (!localStorage.getItem('details')) {

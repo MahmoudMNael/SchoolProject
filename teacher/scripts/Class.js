@@ -1,6 +1,5 @@
 import { Class } from "../../models/Class.js";
 
-const classTemplate = document.querySelector("[class-template]");
 const userCards = document.querySelector("[data-user-card-container]");
 
 // fetch("http://127.0.0.1:5500/res/JSON_test/Classes.json")
@@ -16,83 +15,44 @@ const userCards = document.querySelector("[data-user-card-container]");
 //     }
 //   });
 
-
 //constant data
-if(!localStorage.getItem('classesData')){
-let classes = [
-  new Class("math", "ahmed", 1),
-  new Class("test", "zagroz", 2),
-  new Class("omar", "lol", 3),
-];
-localStorage.setItem("classesData", JSON.stringify(classes));
+if (!localStorage.getItem("classesData")) {
+  let classes = [
+    new Class("math", "ahmed", 1),
+    new Class("english", "omar", 2),
+    new Class("history", "mazen", 3),
+  ];
+  localStorage.setItem("classesData", JSON.stringify(classes));
 }
 
 const storedData = JSON.parse(localStorage.getItem("classesData"));
 
 for (const Class of storedData) {
-  const card = classTemplate.content.cloneNode(true).children[0];
-  const header = card.querySelector("[data-header]");
-  const body = card.querySelector("[data-body]");
-  header.textContent = Class.name;
-  body.textContent = Class.creater;
-  userCards.append(card);
-}
+  userCards.innerHTML += `
+  <div class="class" data-set-id=${Class.id}>
+  <img
+    class="classimg"
+    src="/assets/images/—Pngtree—school logo_6846798.png"
+    alt=""
+  />
+  <div class="words">
+    <p class="line" data-header>class name: ${Class.name}</p>
+    <p class="line" data-body>Creater: ${Class.creater}</p>
+  </div>
+</div>`;
 
-const createClassForm = document.getElementById("createClassForm");
-const classNameInput = document.getElementById("className");
-const createrInput = document.getElementById("classCreater");
+  //used to make cards navigatble
+  let classCards = document.querySelectorAll(".class");
 
-createClassForm.addEventListener("submit", (event) => {
-  
-  // Prevent default form submission
-  event.preventDefault(); 
-  const className = classNameInput.value;
-  const creater = createrInput.value;
-  let classes =JSON.parse(localStorage.getItem("classesData"));
-  const newClass = new Class(className, creater,classes.length);
-  classes.push(newClass);
-  localStorage.setItem("classesData", JSON.stringify(classes));
-
-  //append the new class to the div
-  const card = classTemplate.content.cloneNode(true).children[0];
-  const header = card.querySelector("[data-header]");
-  const body = card.querySelector("[data-body]");
-  header.textContent = newClass.name;
-  body.textContent = newClass.creater;
-  userCards.append(card);
-
-  //clean up after creating class
-  closePopUp();
-  classNameInput.value = "";
-  createrInput.value = "";
-});
-
-let confirgmlogoutbtn = document.getElementById("logoutbtn");
-
-confirgmlogoutbtn.addEventListener("click", () => {
-  let x = confirm("Are you sure you want to log out?");
-  if (x) {
-    window.location.href = "./index.html";
+  for (let classobj of classCards) {
+    let classes = JSON.parse(localStorage.getItem("classesData"));
+    classobj.addEventListener("click", () => {
+      let id = classobj.getAttribute("data-set-id");
+      localStorage.setItem(
+        "selectedClass",
+        JSON.stringify(classes.find((classobj) => classobj.id == id))
+      );
+      window.location.href = "Teacher-Announcements.html";
+    });
   }
-});
-
-function closePopUp(){
-  let x = document.getElementById("addClass");
-  x.style.opacity = "0%";
-  x.style.visibility = "hidden";
 }
-
-let addclassbtn = document.getElementById("addClassbtn");
-
-addclassbtn.addEventListener("click", () => {
-  let x = document.getElementById("addClass");
-  x.style.opacity = "100%";
-  x.style.visibility = "visible";
-});
-
-let closepopupbtn = document.getElementById("closePopupbtn");
-
-closepopupbtn.addEventListener("click", () => {;
-  closePopUp();
-});
-
