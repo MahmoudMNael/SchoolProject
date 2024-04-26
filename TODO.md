@@ -6,4 +6,6 @@
 
 -edit/delete buttons are down in view task                                     (nael)
 
+-modify active teachers at nael's                                              (nael)
+
 any more notes to be added once spoted.
