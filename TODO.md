@@ -8,6 +8,8 @@
 
 -modify active teachers at nael's                                              (nael)
 
+-admin logging in path (normal register/ route)                              
+
 -when editing anything previous content should appear.
 
 any more notes to be added once spoted.
