@@ -34,6 +34,7 @@ getClasses()
 				alt=""
 			/>
 			<div class="words">
+				<p class="line">Classroom ID: ${classroom.id}</p>
 				<p class="line" data-header>Classroom Name: ${classroom.name}</p>
 				<p class="line" data-body>Teacher: ${classroom.teacher.full_name}</p>
 			</div>
