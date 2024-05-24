@@ -1,101 +1,93 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/navbar.css">
-    <link rel="stylesheet" href="/teacher/stylesheets/People.css">
-    <link rel="stylesheet" href="/teacher//stylesheets/MinNav.css">
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />   
-    <title>
-        People in Class
-    </title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/stylesheets/navbar.css" />
+	<link rel="stylesheet" href="/teacher/stylesheets/People.css" />
+	<link rel="stylesheet" href="/teacher//stylesheets/MinNav.css" />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+	/>
+	<title>People in Class</title>
 </head>
 <body>
-     <!-- NAVBAR -->
-     <header>
-        <span class="logo">JuJuTsu ScHooL</span>
-        <nav>
-            <ul class="nav__links">
-                <li class="nav__li">
-                    <a class="nav__a" href="./viewalltasks.html">Tasks</a>
-                </li>
-                <li class="nav__li"><a class="nav__a " href="ClassAll.html">Classes</a></li>
-                <li class="nav__li"><a class="nav__a" href="TeacherProfile.html">Profile</a></li>
-            </ul>
-        </nav>
-        <div>
-            <button class="nav__btn" id="colorModeBtn">
-                <i id="colorModeIcon" class="fa-solid fa-moon"></i>
-            </button>
-            <button class="nav__btn" id="logoutbtn">Logout</button>
-        </div>
-    </header>
-<!-- END NAVBAR -->
-<!-- Mini NavBar -->
-    <div class="section__header">
-        <ul class="section__links">
-            <li class="section__li">
-            <a class="section__a" href="Teacher-Announcements.html">Announcements</a>
-            </li>
-            <li class="section__li">
-            <a class="section__a" href="Teacher-Assignments.html">Assignments</a>
-            </li>
-            <li class="section__li">
-                <a class="section__a" id="main__title" href="Teacher_view_people.html">People</a>
-            </li>
-        </ul>
-        <div class="search-box">
-            <button class="btn-search">
-                <i class="fas fa-search"></i>
-            </button>
-            <input
-            type="text"
-            class="input-search"
-            placeholder="Search in people..."
-            />
-        </div>
-    </div>
-    <!-- END Mini NavBar -->
-    
-    
-    <div class="Class_List">
-        <h4 class="Admins">Admins</h4>
-        
-        <div class="Admins_table_section">
-            <ul class="Admins_table">
+	<!-- NAVBAR -->
+	<header>
+		<span class="logo">JuJuTsu ScHooL</span>
+		<nav>
+			<ul class="nav__links">
+				<li class="nav__li">
+					<a class="nav__a" href="./viewalltasks.html">Tasks</a>
+				</li>
+				<li class="nav__li">
+					<a class="nav__a" href="ClassAll.html">Classes</a>
+				</li>
+				<li class="nav__li">
+					<a class="nav__a" href="TeacherProfile.html">Profile</a>
+				</li>
+			</ul>
+		</nav>
+		<div>
+			<button class="nav__btn" id="logoutbtn">Logout</button>
+		</div>
+	</header>
+	<!-- END NAVBAR -->
+	<!-- Mini NavBar -->
+	<div class="section__header">
+		<ul class="section__links">
+			<li class="section__li">
+				<a class="section__a" href="Teacher-Announcements.html"
+					>Announcements</a
+				>
+			</li>
+			<li class="section__li">
+				<a class="section__a" href="Teacher-Assignments.html">Assignments</a>
+			</li>
+			<li class="section__li">
+				<a class="section__a" id="main__title" href="Teacher_view_people.html"
+					>People</a
+				>
+			</li>
+		</ul>
+		<div class="search-box">
+			<button class="btn-search">
+				<i class="fas fa-search"></i>
+			</button>
+			<input
+				type="text"
+				class="input-search"
+				placeholder="Search in people..."
+			/>
+		</div>
+	</div>
+	<!-- END Mini NavBar -->
 
-                
-            </ul>
-            <br>
-        </div>
-        <h4 class="Teachers">Teachers</h4>
-        
-        <div class="Teachers_table_section">
-            <ul class="Teachers_table">
+	<div class="Class_List">
+		<h4 class="Admins">Admins</h4>
 
+		<div class="Admins_table_section">
+			<ul class="Admins_table"></ul>
+			<br />
+		</div>
+		<h4 class="Teachers">Teachers</h4>
 
-            </ul>
-            <br>
-        </div>
-        <h4 class="Students">Students</h4>
-        
-        <div class="Students_table_section">
-            <ul class="Students_table">
+		<div class="Teachers_table_section">
+			<ul class="Teachers_table"></ul>
+			<br />
+		</div>
+		<h4 class="Students">Students</h4>
 
-
-                <!-- profile photo size will be edited later -->
-                
-            </ul>
-            <br>
-        </div>
-    </div>
-    <script type="module" src="/teacher/scripts/view_people.js"></script>
-    <script src="/scripts/DarkMode.js" ></script>
+		<div class="Students_table_section">
+			<ul class="Students_table">
+				<!-- profile photo size will be edited later -->
+			</ul>
+			<br />
+		</div>
+	</div>
+	<script type="module" src="/teacher/scripts/view_people.js"></script>
+	<script src="/scripts/DarkMode.js"></script>
 </body>
-
 
 <!-- wrapping lists in a div maybe for styling purposes later -->
 <!-- mini nav would be middle centered using css not now -->

@@ -3,11 +3,7 @@
 	<head>
 		<title>Announcements</title>
 		<meta charset="UTF-8" />
-		<link
-			rel="stylesheet"
-			href="/teacher/stylesheets/Teacher-Announcements.css"
-		/>
-		<link rel="stylesheet" href="../stylesheets/navbar.css" />
+		<link rel="stylesheet" href="stylesheets/Teacher-Announcements.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -31,9 +27,6 @@
 					</ul>
 				</nav>
 				<div id="logOut">
-					<button class="nav__btn" id="colorModeBtn">
-						<i id="colorModeIcon" class="fa-solid fa-moon"></i>
-					</button>
 					<button class="nav__btn" id="logoutbtn">Logout</button>
 				</div>
 			</header>
@@ -72,10 +65,35 @@
 			</div>
 		</div>
 		<!-- End of pop up-->
-		<script
-			src="/teacher/scripts/Teacher-announcement.js"
-			type="module"
-		></script>
-		<script src="/scripts/DarkMode.js"></script>
+		<!-- Pop UP  -->
+		<div id="Container-2">
+			<h2>Enter Details Here</h2>
+			<textarea
+				name="Title"
+				id="Title-2"
+				placeholder="."
+				class="Focusing"
+			></textarea>
+			<label for="Title" id="label1-edit">Title</label>
+			<textarea name="Content" id="Content-edit" class="Focusing2"></textarea>
+			<label for="Content" id="label2-edit">Type Here</label>
+			<h4>Due Time</h4>
+			<input type="date" name="Date" id="Date-2" />
+			<div class="Buttons">
+				<div id="edit_btn">
+					<input type="button" value="Edit" id="Accept-2" />
+				</div>
+				<div id="delete_btn">
+					<input
+						type="button"
+						value="Cancel"
+						id="Decline-2"
+						onclick="cancelPopup()"
+					/>
+				</div>
+			</div>
+		</div>
+		<script src="scripts/Teacher-announcement.js"></script>
+		<script src="../scripts/navbar.js"></script>
 	</body>
 </html>

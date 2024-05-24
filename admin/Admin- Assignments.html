@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            Assignments
-        </title>
-        <meta charset="UTF_8">
-        <link rel="stylesheet" href="/admin/stylesheets/Admin- Assignments.css">
-        <link rel="stylesheet" href="/stylesheets/navbar.css">
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-    </head>
-    <body>
-        <header>
-            <span class="logo">JuJuTsu ScHooL</span>
-            <nav>
-                <ul class="nav__links">
-                    <li class="nav__li">
-                        <a class="nav__a" href="./viewalltasks.html">Tasks</a>
-                    </li>
-                    <li class="nav__li"><a class="nav__a" href="classAdmin.html">Classes</a></li>
-                    <li class="nav__li"><a class="nav__a" href="View_pending_account.html">Accounts</a></li>
-                    <li class="nav__li"><a class="nav__a" href="AdminProfile.html">Profile</a></li>
-                </ul>
-            </nav>
-            <div>
-                <button class="nav__btn" id="colorModeBtn">
-                    <i id="colorModeIcon" class="fa-solid fa-moon"></i>
-                </button>
-                <button class="nav__btn" id="logout">Logout</button>
-            </div>
-        </header>
-        <div class="content-classes">
-            <div class="secNav">
-                <a href="Admin-Announcement.html" class="Announcment">Announcements</a>
-                <a href="Admin- Assignments.html" class="Assignments nav__active">Assignments</a>
-                <a href="Admin_view_people.html" class="people">People</a>
-            </div>
-        </div>
-        <div id="assi-txt">    
-            
-        </div>
-        <script src="/scripts/DarkMode.js"></script>
-        <script src="/admin/scripts/Admin-assignment.js" type="module"></script>
-    </body>
+	<head>
+		<title>Assignments</title>
+		<meta charset="UTF_8" />
+		<link rel="stylesheet" href="stylesheets/Admin- Assignments.css" />
+		<link rel="stylesheet" href="../stylesheets/navbar.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<span class="logo">JuJuTsu ScHooL</span>
+			<nav>
+				<ul class="nav__links">
+					<li class="nav__li">
+						<a class="nav__a" href="./viewalltasks.html">Tasks</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="classAdmin.html">Classes</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="View_pending_account.html">Accounts</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="AdminProfile.html">Profile</a>
+					</li>
+				</ul>
+			</nav>
+			<div>
+				<button class="nav__btn" id="logout">Logout</button>
+			</div>
+		</header>
+		<div class="content-classes">
+			<div class="secNav">
+				<a href="Admin-Announcement.html" class="Announcment">Announcements</a>
+				<a href="Admin- Assignments.html" class="Assignments nav__active"
+					>Assignments</a
+				>
+				<a href="Admin_view_people.html" class="people">People</a>
+			</div>
+		</div>
+		<div id="assi-txt"></div>
+		<script src="../scripts/navbar.js"></script>
+		<script src="scripts/Admin-assignment.js"></script>
+	</body>
 </html>

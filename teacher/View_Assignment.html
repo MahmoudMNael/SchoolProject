@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assingment</title>
-  <link rel="stylesheet" href="/teacher/stylesheets/View_Assignment.css">
-  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <title>Assingment Details</title>
+  <link rel="stylesheet" href="stylesheets/assignDetails.css">
+  <link rel="stylesheet" href="../stylesheets/navbar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
   <div id="blur">
+    
     <!-- Start of Nav -->
     <header>
       <span class="logo">JuJuTsu ScHooL</span>
@@ -23,71 +24,59 @@
           </ul>
       </nav>
       <div>
-          <button class="nav__btn" id="colorModeBtn">
-              <i id="colorModeIcon" class="fa-solid fa-moon"></i>
-          </button>
           <button class="nav__btn" id="logout" >Logout</button>
       </div>
     </header>
     <!-- End of Nav-->
 
+    <div id="sides">
+      <div id="leftSide">
+        <!-- Header of Details -->
+        <div id="Header" class="Header"></div>
+        <!-- End of Header -->
+  
+        <!-- Content of Details -->
+        <div class="Content" id="Content"></div>
+        <br>
+        <!-- End of Content -->
+  
+        
+  
+        <!-- Buttons Edit & Delete -->
+        <div class="btns">
+          <!--
+            <div id="edit_btn">
+              <button type="button" id="edt_btn">Edit</button>
+            </div>
 
-    <!-- Header of Details -->
-    <div class="Header">
-      <img src="/assets/icons/Logo_Assignments.png" alt="">
-      <div class="assignment">
-        <H1>Math:</H1>
-        <p><span>Published at:</span> 3/10/2024</p>
-        <p><span>Due Time:</span> 3/15/2024</p>
-      </div>
-      <!--
-      <div class="classroom">
-        <h3>Classroom: Web_Technology</h3>
-      </div>
-      <div class="doctor_name">
-        <h2>BY: Dr/Neamat El Tazi</h2>
-      </div>
-      -->
-      <!--
-        <div class="Date">
-        <p>
-          <p>Started From: 3/10/2024.</p>
-          <p>Due Time: 3/15/2024.</p>
-        </p>
+            <div id="delete_btn">
+              <input type="button" value="Delete" id="dlt_btn" onclick="deleteAnnouncment(1)">
+            </div>
+          -->
+          
+          <button id="cmnt_btn">Add Comment</button>
+          
+          <div id="showLinks">
+            <button id="showLinksBtn">Show Links</button>
+          </div>
         </div>
-      -->
-    </div>
-    <!-- End Of Header -->
-
-
-    <!-- Content of Details -->
-    <div class="Content" id="Content">
-      <p>
-        Here is the details of assignment Math.
-      </p>
-    </div>
-    <br>
-    <!-- End of Content -->
-
-
-    <!-- Buttons Edit & Delete -->
-    <div class="btns">
-      <div id="edit_btn">
-        <input type="button" value="Edit" id="edt_btn">
+        <!-- End of Buttons -->
+  
+  
+        <!-- Comment Section -->
+        <div class="head_comment">
+          Comments Section
+        </div>
+        <div id="comment_section" class="comment_section"></div>
+        <!-- End of Comment Section -->
       </div>
-      <div id="delete_btn">
-        <input type="button" value="Delete" id="dlt_btn">
+      
+      <div id="rightSide">
+        <!-- Content of Links-->
+        
       </div>
+      
     </div>
-    <!-- End of Buttons -->
-
-
-    <!-- Comment Section -->
-    <div class="head_comment">
-      Comments Section
-    </div>
-    <div class="comment_section"></div>
-    <!-- End of Comment Section -->
   </div>
 
 
@@ -118,12 +107,33 @@
   -->
   <!-- End of Pop Up -->
 
+  <!-- Pop Up 1 -->
+  <form id="Containercmnt">
+    <h2>Enter Your Comment Here</h2>
+    
+    <!--
+    <input type="text" name="commenterName" id="Titlecmnt">
+    <label for="commenterName" id="label1cmnt">Enter Your Name Here</label>
+    -->
+
+    <input type="text" name="commentContent" id="Title3cmnt">
+    <label for="commentContent" id="label3cmnt">Enter Your Comment Here</label>
+
+    <div class="Buttons">
+      <div id="edit_btn">
+        <input type="button" value="Submit" id="Acceptcmnt" onclick="sendDataComment()">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Cancel" id="Declinecmnt" >
+      </div>
+    </div>
+  </form>
+  <!-- Pop Up Section -->
+
   <!-- Pop UP 2 -->
-  <div id="Container">
-    <!-- <input type="text" name="Title" id="Title" placeholder="Title">
-    <input type="text" name="Content" id="Content" placeholder="Content"> -->
+  <form id="Container">
     <h2>Enter Details Here</h2>
-    <textarea name="Title" id="Title"></textarea>
+    <input name="Title" id="Title"></input>
     <label for="Title" id="label1">Title</label>
     <textarea name="Content" id="Content2"></textarea>
     <label for="Content" id="label2">Content</label>
@@ -137,10 +147,32 @@
         <input type="button" value="Cancel" id="Decline">
       </div>
     </div>
-  </div>
+  </form>
   <!-- End of pop up 2-->
-  <script src="/teacher/scripts/View_Assignment.js" type="module"></script>
-  <script src="/scripts/DarkMode.js"></script>
+
+  <!-- 
+  <form id="Container">
+    <h2>Enter Details Here</h2>
+    <div id="titleText"></div>
+    <div id="contentText">
+      <textarea name="Content" id="Content2"></textarea>
+      <label for="Content" id="label2">Content</label>
+    </div>
+    <h4>Due Time</h4>
+    <input type="date" name="Date" id="Date" required>
+    <div class="Buttons">
+      <div id="edit_btn">
+        <input type="submit" value="Save" id="Accept">
+      </div>
+      <div id="delete_btn">
+        <input type="button" value="Cancel" id="Decline">
+      </div>
+    </div>
+  </form>
+  -->
+
+  <script src="scripts/assignDetails.js"></script>
+  <script src="../scripts/navbar.js"></script>
   
 </body>
 </html>

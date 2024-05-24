@@ -1,78 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assingment</title>
-  <link rel="stylesheet" href="/admin/stylesheets/View_Assignment.css">
-  <link rel="stylesheet" href="/stylesheets/navbar.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-</head>
-  
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Assignment Details</title>
+		<link rel="stylesheet" href="stylesheets/assignDetails.CSS" />
+		<link rel="stylesheet" href="../stylesheets/navbar.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<!-- Start of Nav -->
+		<header>
+			<span class="logo">JuJuTsu ScHooL</span>
+			<nav>
+				<ul class="nav__links">
+					<li class="nav__li">
+						<a class="nav__a" href="viewalltasks.html">Tasks</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="classAdmin.html">Classes</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="View_pending_account.html">Accounts</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="AdminProfile.html">Profile</a>
+					</li>
+				</ul>
+			</nav>
+			<div>
+				<button class="nav__btn" id="logoutbtn">Logout</button>
+			</div>
+		</header>
+		<!-- End of Nav-->
 
+		<!-- Header of Details -->
+		<div id="Header" class="Header"></div>
+		<!-- End of Header -->
 
-<body>
-  <!-- Start of Nav -->
-  <header>
-    <span class="logo">JuJuTsu ScHooL</span>
-    <nav>
-        <ul class="nav__links">
-            <li class="nav__li">
-                <a class="nav__a" href="viewalltasks.html">Tasks</a>
-            </li>
-            <li class="nav__li"><a class="nav__a" href="classAdmin.html">Classes</a></li>
-            <li class="nav__li"><a class="nav__a" href="View_pending_account.html">Accounts</a></li>
-            <li class="nav__li"><a class="nav__a" href="AdminProfile.html">Profile</a></li>
-        </ul>
-    </nav>
-    <div>
-      <!--
-        <button class="nav__btn" id="colorModeBtn">
-            <i id="colorModeIcon" class="fa-solid fa-moon"></i>
-        </button>
-      -->  
-        <button class="nav__btn" id="logoutbtn">Logout</button>
-    </div>
-  </header>
-  <!-- End of Nav-->
+		<!-- Content of Details -->
+		<div class="Content" id="Content"></div>
+		<br />
+		<!-- End of Content -->
 
-  <div class="Header">
-    <img src="/assets/icons/Logo_Assignments.png" alt="">
-    <div class="assignment">
-      <H1>Math:</H1>
-      <p><span>Published at:</span> 3/10/2024</p>
-      <p><span>Due Time:</span> 3/15/2024</p>
-    </div>
-  </div>
+		<!-- Contact -->
+		<div class="Contact">
+			Teacher's Contacts:
+			<br />
+			<a href="mailto:"><img src="../Res/Email.png" alt="" /></a>
+			<a href="http://whatsapp.com"><img src="../Res/whatsapp.png" alt="" /></a>
+		</div>
+		<!-- End of the contact -->
 
-  <!-- Content of Details -->
-  <div class="Content" id="Content">
-    <p>
-      Here is The Details of assignment Math.
-    </p>
-  </div>
-  <br>
-  <!-- End of Content -->
+		<!-- Comment Section -->
+		<div class="head_comment">Comments Section</div>
+		<div id="comment_section" class="comment_section"></div>
+		<!-- End of Comment Section -->
 
-  <!-- Contact -->
-  <div class="Contact">
-    Teacher's Contacts:
-    <br>
-    <a href="mailto:"><img src="/assets/icons/Email.png" alt=""></a>
-    <a href="http://whatsapp.com"><img src="/assets/icons/whatsapp.png" alt=""></a>
-  </div>
-  <!-- End of the contact -->
-
-  <!-- Comment Section -->
-  <div class="head_comment">
-    Comments Section
-  </div>
-  <div class="comment_section">
-    
-  </div>
-  <!-- End of Comment Section -->
-
-  <script src="/admin/scripts/View_Assignment.js" type="module"></script>
-  <script src="/scripts/DarkMode.js"></script>
-</body>
+		<script src="scripts/assignDetails.js"></script>
+		<script src="../scripts/navbar.js"></script>
+	</body>
 </html>

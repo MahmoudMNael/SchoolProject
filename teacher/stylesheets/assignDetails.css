@@ -1,0 +1,586 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+	font-family: 'jujutsu';
+	src: url('/Res/Fonts/Jujutsu_Kaisen.ttf');
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+img {
+  width: 42px;
+  height: 42px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+#sides {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#blur.active {
+  filter: blur(15px);
+}
+
+/* basics end */
+#leftSide {
+  width: 1500px;
+}
+
+.profile_user {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+  margin-top: 2px;
+}
+
+.logout_img {
+  width: 15px;
+  height: 15px;
+  margin-right: 2px;
+  margin-top: 2px;
+}
+
+.Header {
+  display: flex;
+  padding: 8px;
+  margin-left: 65px;
+  gap: 10px;
+}
+
+.assignment {
+  display: solid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.assignment p {
+  font-size: smaller;
+  color: #354f52;
+}
+
+.classroom {
+  display: solid;
+  width: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 40px;
+}
+
+.doctor_name {
+  display: solid;
+  width: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.Content {
+  background-color: white;
+  font-size: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width:90%;
+  height: max-content;
+  word-spacing: 3px;
+  padding: 0.8%;
+  box-shadow: 0.5px 0.5px 5px;
+}
+
+/* End of Header */
+
+/* Div of Links */ 
+#rightSide {
+  margin-top: 10px;
+  margin-right: 50px;
+  border-radius: 10px;
+  border: solid;
+  width: 450px;
+  height: 600px;
+  overflow-y: scroll;
+  display: none;
+}
+
+.hide{
+  display: block !important;
+}
+
+#divLink {
+  padding: 10px;
+  height: 80px;
+}
+
+#divLink a {
+  color: blue;
+}
+
+#nameSubmiter img{
+  width: 20px;
+  height: 20px;
+}
+
+#nameSubmiter {
+  display: flex;
+  align-content: center;
+  gap: 5px;
+}
+
+#submitLink {
+  margin-top: 5px;
+  font-size: small;
+}
+
+/* End of Link Div */
+
+.btns {
+  display: flex;
+  width: 500px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  justify-content: center;
+  gap: 20px;
+}
+
+#edt_btn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius : 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#edt_btn:hover {
+  background-color: #84A98C;
+}
+
+#dlt_btn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#dlt_btn:hover {
+  background-color:  #84A98C;
+}
+
+#showLinksBtn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 15px;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#showLinksBtn:hover {
+  background-color:  #84A98C;
+}
+
+#cmnt_btn {
+  border: solid black;
+  background-color: #52796F;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#cmnt_btn:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+/* edit delete end btns */
+
+.comment_section {
+  display: block;
+  width: 900px;
+  height: 300px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+
+.head_comment {
+  text-align: center;
+  font-size: 32px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile_user {
+  width: 20px;
+  height: 20px;
+  margin-top: -1px;
+  margin-right: 5px;
+}
+
+.commenter {
+  display: flex;
+  margin-top: auto;
+}
+
+.comment_content {
+  margin-top: 8px;
+  margin-left: 25px;
+}
+
+.card_comment {
+  display: block;
+  align-items: center;
+  min-height: 30px;
+  height: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  width: 800px;
+  border-radius: 10px;
+  background-color: var(--primaryBG);
+  font-size: 15px;
+  padding: 10px;
+  transition-duration: 0.5s;
+  box-shadow: 0.5px 0.5px 5px;
+}
+
+/* comment end */
+
+#Containercmnt {
+  border: solid 1px black;
+  border-radius: 20px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc((100%/2) - 125px);
+  margin-left: calc((100%/2) - 400px);
+  width: 800px;
+  height: 250px;
+  padding: 20px;
+}
+
+#Titlecmnt {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Title3cmnt {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Titlecmnt:focus,  
+#Title3cmnt:focus {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Titlecmnt:hover,
+#Title3cmnt:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#label1cmnt {
+  position: absolute;
+  top: 70px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+#label3cmnt {
+  position: absolute;
+  top: 75px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.Focusing + #label1cmnt {
+  top: 50px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+.Focusing + #label3cmnt {
+  top: 53px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+#Acceptcmnt {
+  border: solid ; 
+  background-color: #52796F;
+  color: white;
+  border-radius : 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Acceptcmnt:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#Declinecmnt {
+  border: solid ;
+  background-color: #52796F;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Declinecmnt:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+/* box of edit end */
+
+
+/* BOX of Edit 2 */ 
+h2 {
+  text-align: center;
+  color: #52796F;
+}
+
+#Container {
+  border: solid 1px ;
+  border-radius: 20px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc((100%/2) - 250px);
+  margin-left: calc((100%/2) - 400px);
+  width: 800px;
+  height: 500px;
+  padding: 20px;
+}
+
+#Title {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Title:focus {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Title:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Content2 {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 20px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Content2:focus{
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Content2:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+label {
+  position: absolute;
+  top: 84px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+#label2 {
+  position: absolute;
+  top: 154px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+
+.Focusing + #label1{
+  top: 60px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+.Focusing2 {
+  height: 200px !important;
+  transition-duration: 0.5s;
+  background-color: #F8F9FA !important;
+}
+
+.Focusing2 + #label2 {
+  top: 132px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+h4 {
+  text-align: center;
+  color: #354f52;
+  margin-top: -10px;
+}
+
+#Date {
+  display: block;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+::-webkit-calendar-picker-indicator{
+  background-color:#CAD2C5;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.Buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+#Accept {
+  border: solid ; 
+  background-color: #52796F;
+  color: white;
+  border-radius : 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Accept:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+#Decline {
+  border: solid ;
+  background-color: #52796F;
+  color: white;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Decline:hover {
+  background-color: #84A98C;
+  transition-duration: 0.5s;
+}
+
+.verification {
+  color: red;
+}
+
+/* End of Box */

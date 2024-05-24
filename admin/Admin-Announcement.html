@@ -1,50 +1,49 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            Announcements
-        </title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/admin/stylesheets/Admin-Announcement.css">
-        <link rel="stylesheet" href="/stylesheets/navbar.css">
+	<head>
+		<title>Announcements</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="stylesheets/Admin-Announcement.css" />
+		<link rel="stylesheet" href="/stylesheets/navbar.css" />
 
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-    </head>
-    <body>
-        <header>
-            <span class="logo">JuJuTsu ScHooL</span>
-            <nav>
-                <ul class="nav__links">
-                    
-                    <li class="nav__li">
-                        <a class="nav__a" href="./viewalltasks.html">Tasks</a>
-                    </li>
-                    <li class="nav__li"><a class="nav__a" href="classAdmin.html">Classes</a></li>
-                    <li class="nav__li"><a class="nav__a" href="View_pending_account.html">Accounts</a></li>
-                    <li class="nav__li"><a class="nav__a" href="AdminProfile.html">Profile</a></li>
-                </ul>
-            </nav>
-            <div>
-                <button class="nav__btn" id="colorModeBtn">
-                    <i id="colorModeIcon" class="fa-solid fa-moon"></i>
-                </button>
-                <button class="nav__btn" id="logoutbtn">Logout</button>
-            </div>
-        </header>
-        <div class="content-classes">
-            <div class="secNav">
-                <a href="Admin-Announcement.html" class="Announcment nav__active">Announcements</a>
-                <a href="Admin- Assignments.html" class="Assignments">Assignments</a>
-                <a href="Admin_view_people.html" class="people">People</a>
-            </div>
-        </div>
-        <div id="ann-txt">
-            
-        </div>
-        <script src="/scripts/DarkMode.js"></script>
-        <script src="/admin/scripts/Admin-announcment.js" type="module"></script>
-    </body>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<span class="logo">JuJuTsu ScHooL</span>
+			<nav>
+				<ul class="nav__links">
+					<li class="nav__li">
+						<a class="nav__a" href="./viewalltasks.html">Tasks</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="classAdmin.html">Classes</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="View_pending_account.html">Accounts</a>
+					</li>
+					<li class="nav__li">
+						<a class="nav__a" href="AdminProfile.html">Profile</a>
+					</li>
+				</ul>
+			</nav>
+			<div>
+				<button class="nav__btn" id="logoutbtn">Logout</button>
+			</div>
+		</header>
+		<div class="content-classes">
+			<div class="secNav">
+				<a href="Admin-Announcement.html" class="Announcment nav__active"
+					>Announcements</a
+				>
+				<a href="Admin- Assignments.html" class="Assignments">Assignments</a>
+				<a href="Admin_view_people.html" class="people">People</a>
+			</div>
+		</div>
+		<div id="ann-txt"></div>
+		<script src="../scripts/navbar.js"></script>
+		<script src="scripts/Admin-announcment.js"></script>
+	</body>
 </html>
