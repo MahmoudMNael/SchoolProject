@@ -397,3 +397,7 @@ li.selected {
 .btn__row {
 	margin-bottom: 16px;
 }
+
+.task__card > .task__property:first-of-type {
+	text-transform: capitalize;
+}

@@ -1,113 +1,92 @@
-import { User } from "../../models/User.js";
-
-if (!localStorage.getItem("RegisteredUsers")) {
-  let classes = [
-    new User(
-      "Ebrahim",
-      "ibrahimjarb69@gmail.com",
-      "1234_hima_1234",
-      "admin",
-      1
-    ),
-    new User("Nael", "ibrahimjarb69@gmail.com", "1234_hima_1234", "admin", 2),
-    new User("Mazen", "ibrahimjarb69@gmail.com", "1234_hima_1234", "admin", 3),
-    new User("Bota", "ibrahimjarb69@gmail.com", "1234_hima_1234", "admin", 4),
-    new User("Omar", "ibrahimjarb69@gmail.com", "1234_hima_1234", "admin", 5),
-  ];
-  localStorage.setItem("RegisteredUsers", JSON.stringify(classes));
-}
-
-if (!localStorage.getItem("pendingAccounts")) {
-  localStorage.setItem("pendingAccounts", JSON.stringify([]));
-}
-
 //registration related
 
-let Registrationbtn = document.getElementById("Registrationbtn");
+let Registrationbtn = document.getElementById('Registrationbtn');
 
-Registrationbtn.addEventListener("click", () => {
-  const userNameInput = document.getElementById("reg-name");
-  const userEmailInput = document.getElementById("reg-email");
-  const userPassInput = document.getElementById("reg-pass");
-  const userConfirmPassInput = document.getElementById("reg-confirm-pass");
-  const userRoleInput = document.getElementsByName("role");
+Registrationbtn.addEventListener('click', (e) => {
+	const userNameInput = document.getElementById('reg-name');
+	const userEmailInput = document.getElementById('reg-email');
+	const userPassInput = document.getElementById('reg-pass');
+	const userConfirmPassInput = document.getElementById('reg-confirm-pass');
+	const userRoleInput = document.querySelector('input[name="role"]:checked');
 
-  event.preventDefault();
-  let RegisteredUsers = JSON.parse(localStorage.getItem("RegisteredUsers"));
-  let duplaciteEmail = userEmailInput.value;
-  let valid = true;
+	if (userPassInput.value.trim() != userConfirmPassInput.value.trim()) {
+		alert('Password does not match');
+		return;
+	}
 
-  for (let i = 0; RegisteredUsers.length > i; ++i) {
-    if (RegisteredUsers[i].email == duplaciteEmail) {
-      alert("email already in usage!");
-      userEmailInput.value = "";
-      valid = false;
-      break;
-    }
-  }
+	let newUser = {
+		full_name: userNameInput.value.trim(),
+		email: userEmailInput.value.trim(),
+		password: userPassInput.value.trim(),
+		role: userRoleInput.value,
+	};
 
-  if (userPassInput.value != userConfirmPassInput.value) {
-    alert("passwords dont match!");
-    userConfirmPassInput.value = "";
-  } else if (valid) {
-    let pendingAccounts = JSON.parse(localStorage.getItem("pendingAccounts"));
-    if (userRoleInput[0].checked) {
-      var role = "student";
-    } else {
-      var role = "teacher";
-    }
-    const newUser = new User(
-      userNameInput.value,
-      userEmailInput.value,
-      userPassInput.value,
-      role,
-      pendingAccounts.length
-    );
-    pendingAccounts.push(newUser);
-    localStorage.setItem("pendingAccounts", JSON.stringify(pendingAccounts));
-    location.reload();
-  }
+	let registerRequest = new XMLHttpRequest();
+	registerRequest.open(
+		'POST',
+		'http://localhost:8000/api/auth/register/',
+		false
+	);
+	registerRequest.withCredentials = true;
+	registerRequest.setRequestHeader('Content-Type', 'application/json');
+	registerRequest.onload = () => {
+		if (registerRequest.status >= 200 && registerRequest.status < 300) {
+			alert('User created successfully! but pending the admin approval');
+		} else {
+			console.log('registration failed');
+		}
+	};
+	registerRequest.send(JSON.stringify(newUser));
 });
 
 //registration finished
 
 //login relateed
 
-let loginbtn = document.getElementById("loginbtn");
-loginbtn.addEventListener("click", () => {
-  event.preventDefault();
-  let accessGranted = false;
-  let userRole = null;
-  const userEmailInput = document.getElementById("login-email");
-  const userPassInput = document.getElementById("login-pass");
-  let RegisteredUsers = JSON.parse(localStorage.getItem("RegisteredUsers"));
+let loginbtn = document.getElementById('loginbtn');
+loginbtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	e.stopPropagation();
 
-  for (let i = 0; RegisteredUsers.length > i; ++i) {
-    if (userEmailInput.value == RegisteredUsers[i].email) {
-      if (userPassInput.value == RegisteredUsers[i].password) {
-        localStorage.setItem("user", JSON.stringify(RegisteredUsers[i]));
-        userRole = RegisteredUsers[i].role;
-        accessGranted = true;
-        break;
-      }
-    }
-  }
-  if (accessGranted) {
-    switch (userRole) {
-      case "admin":
-        window.location.href = "classAdmin.html";
-        break;
-      case "teacher":
-        window.location.href = "/teacher/ClassAll.html";
-        break;
-      case "student":
-        window.location.href = "/student/ClassAll.html";
-        break;
-    }
-  } else {
-    alert("Wrong credentials! Please try again.");
-    userEmailInput.value = "";
-    userPassInput.value = "";
-  }
+	const userEmailInput = document.getElementById('login-email');
+	const userPassInput = document.getElementById('login-pass');
+
+	let user = {
+		email: userEmailInput.value.trim(),
+		password: userPassInput.value.trim(),
+	};
+
+	let loginRequest = new XMLHttpRequest();
+	loginRequest.open('POST', 'http://localhost:8000/api/auth/login/', false);
+	loginRequest.withCredentials = true;
+	loginRequest.setRequestHeader('Content-Type', 'application/json');
+	loginRequest.onload = () => {
+		if (loginRequest.status == 204) {
+			alert('Your account is pending approval');
+			return;
+		}
+
+		if (loginRequest.status >= 200 && loginRequest.status < 300) {
+			let response = JSON.parse(loginRequest.responseText);
+			console.log(response);
+			console.log(loginRequest.getAllResponseHeaders());
+			switch (response.role) {
+				case 'admin':
+					window.location.href = '/admin/classAdmin.html';
+					break;
+
+				case 'teacher':
+					window.location.href = '/teacher/ClassAll.html';
+					break;
+
+				case 'student':
+					window.location.href = '/student/ClassAll.html';
+					break;
+			}
+		} else {
+			alert('Login failed');
+		}
+	};
+	loginRequest.send(JSON.stringify(user));
 });
 //login done

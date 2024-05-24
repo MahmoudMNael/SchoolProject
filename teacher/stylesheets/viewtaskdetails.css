@@ -7,6 +7,18 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+p {
+	white-space: pre-line;
+}
+
+#priorityDropdownWrapper {
+	text-transform: capitalize;
+}
+
+.task__property:first-of-type {
+	text-transform: capitalize;
+}
+
 .main {
 	padding: 24px 36px;
 }

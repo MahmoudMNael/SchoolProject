@@ -1,57 +1,79 @@
-import { Task } from '../../models/task.js';
+var selectedTask = {};
 
-let storageSelectedTask = JSON.parse(localStorage.getItem('selectedTask'));
-let selectedTask = Task.constructObject(storageSelectedTask);
+const getTaskFromAPI = () => {
+	let id = sessionStorage.getItem('taskID');
+	return new Promise((resolve, reject) => {
+		let taskRequest = new XMLHttpRequest();
+		taskRequest.open('GET', `http://localhost:8000/api/tasks/${id}/`, true);
+		taskRequest.withCredentials = true;
+		taskRequest.onload = () => {
+			if (taskRequest.status >= 200 && taskRequest.status < 300) {
+				console.log('get task success');
+				resolve(taskRequest.responseText);
+			} else {
+				console.log('get task failed');
+				reject({
+					status: taskRequest.status,
+					statusText: taskRequest.statusText,
+				});
+			}
+		};
+		taskRequest.send();
+	});
+};
 
-let storageTasks = JSON.parse(localStorage.getItem('tasks'));
-let tasks = [];
-
-storageTasks = [];
-
-for (let task of storageTasks) {
-	tasks.push(Task.constructObject(task));
+function getPriorityColor(task) {
+	if (task.priority === 'low') {
+		return 'safe';
+	} else if (task.priority === 'medium') {
+		return 'warning';
+	} else {
+		return 'danger';
+	}
 }
 
-let mainSection = document.querySelector('.main');
-mainSection.innerHTML = `
-<div class="section__header">
-				<div>
-					<h1 id="main__title">${selectedTask.title}</h1>
-					<h2 class="task__property">
-						<i class="fa-regular fa-flag"></i> Priority:
-						<span class="${selectedTask.getPriorityColor()}">${selectedTask.priority}</span>
-					</h2>
-					<h2 class="task__property">
-						<i class="fa-regular fa-calendar-days"></i> Date:
-						<span>${selectedTask.createdAt}</span>
-					</h2>
-					<h2 class="task__property">
-						<i class="fa-regular fa-user"></i> Teacher:
-						<span>${selectedTask.teacher.name} (${selectedTask.teacher.email})</span>
-					</h2>
-				</div>
-				<div class="task__buttons__container">
-					<button class="task__button edit__button" id="editButton">
-						Edit
-					</button>
-					<button class="task__button delete__button" id="deleteButton">
-						Delete
-					</button>
-				</div>
-			</div>
-			<p class="task__description">
-				${selectedTask.description}
-			</p>
-			`;
+window.addEventListener('load', () => {
+	getTaskFromAPI().then((data) => {
+		selectedTask = JSON.parse(data);
+		let mainSection = document.querySelector('.main');
+		document.querySelector('#main__title').innerText = selectedTask.title;
+		document.querySelector(
+			'#task__priority'
+		).innerHTML += `<span class="${getPriorityColor(selectedTask)}">${
+			selectedTask.priority
+		}</span>`;
+		document.querySelector(
+			'#task__date'
+		).innerHTML += `<span>${selectedTask.created_at}</span>`;
+		document.querySelector('#task__teacher').innerHTML += `<span
+		>${selectedTask.teacher.full_name}
+		(${selectedTask.teacher.email})</span>`;
+		document.querySelector('#task__description').innerText =
+			selectedTask.description;
+	});
+});
 
 let editButton = document.querySelector('#editButton');
 let deleteButton = document.querySelector('#deleteButton');
 
 deleteButton.addEventListener('click', () => {
 	if (confirm('Are you sure you want to delete this task?')) {
-		let index = tasks.indexOf(tasks.find((task) => task.id == selectedTask.id));
-		tasks.splice(index, 1);
-		localStorage.setItem('tasks', JSON.stringify(tasks));
+		let deleteRequest = new XMLHttpRequest();
+		deleteRequest.open(
+			'DELETE',
+			`http://localhost:8000/api/tasks/${selectedTask.id}/`,
+			true
+		);
+		deleteRequest.withCredentials = true;
+		deleteRequest.onload = () => {
+			if (deleteRequest.status >= 200 && deleteRequest.status < 300) {
+				alert('Task deleted successfully!');
+			} else {
+				alert('Task deletion failed!');
+			}
+		};
+		deleteRequest.send();
+
 		window.location.href = './viewalltasks.html';
 	}
 });
@@ -59,9 +81,48 @@ deleteButton.addEventListener('click', () => {
 let popup = document.querySelector('#popup');
 let cancelBtn = document.querySelector('#cancelBtn');
 
+var teachers = [];
+var gSelectedTeacher = null;
+
+const getTeachersFromAPI = () => {
+	return new Promise((resolve, reject) => {
+		let teachersRequest = new XMLHttpRequest();
+		teachersRequest.open(
+			'GET',
+			'http://localhost:8000/api/users/teacher/',
+			true
+		);
+		teachersRequest.withCredentials = true;
+		teachersRequest.onload = () => {
+			if (teachersRequest.status >= 200 && teachersRequest.status < 300) {
+				console.log('get teachers success');
+				resolve(teachersRequest.responseText);
+			} else {
+				reject({
+					status: teachersRequest.status,
+					statusText: teachersRequest.statusText,
+				});
+				console.log('get teachers failed');
+			}
+		};
+		teachersRequest.send();
+	});
+};
+
 editButton.addEventListener('click', () => {
+	console.log('edit button clicked');
 	popup.classList.add('popup__active');
 	document.body.style.overflow = 'hidden';
+	document.querySelector('#titleInput').value = selectedTask.title;
+	document.querySelector('#descInput').value = selectedTask.description;
+
+	getTeachersFromAPI().then((data) => {
+		teachers = JSON.parse(data);
+		addTeacher();
+		addPriority();
+		updateTeacher(selectedTask.teacher.id);
+		updatePriority(selectedTask.priority);
+	});
 });
 
 cancelBtn.addEventListener('click', () => {
@@ -85,20 +146,16 @@ function refreshTeachersLiEventListeners() {
 	}
 }
 
-let teachers = JSON.parse(localStorage.getItem('teachers'));
-
 function updateTeacher(id) {
 	teachersSearch.value = '';
 	addTeacher(id);
 	teachersDropdownWrapper.classList.remove('active');
 	teachersSelectBtn.firstElementChild.innerText = teachers.find(
 		(teacher) => teacher.id == id
-	).name;
+	).full_name;
 	teachersSelectBtn.setAttribute('data-set-id', id);
 	teachersSelectBtn.setAttribute('data-selected', 'true');
 }
-
-let gSelectedTeacher = null;
 
 function addTeacher(selectedTeacher) {
 	teachersOptions.innerHTML = '';
@@ -110,7 +167,7 @@ function addTeacher(selectedTeacher) {
 				gSelectedTeacher = teacher.id;
 			}
 		}
-		let li = `<li data-set-id="${teacher.id}" class="${isSelected}">${teacher.name}<br />${teacher.email}</li>`;
+		let li = `<li data-set-id="${teacher.id}" class="${isSelected}">${teacher.full_name}<br />${teacher.email}</li>`;
 		teachersOptions.insertAdjacentHTML('beforeend', li);
 		refreshTeachersLiEventListeners();
 	}
@@ -123,7 +180,7 @@ teachersSearch.addEventListener('keyup', () => {
 	let searchedValue = teachersSearch.value.toLowerCase();
 	filteredTeachers = teachers.filter((teacher) => {
 		return (
-			teacher.name.toLowerCase().startsWith(searchedValue) ||
+			teacher.full_name.toLowerCase().startsWith(searchedValue) ||
 			teacher.email.toLowerCase().startsWith(searchedValue)
 		);
 	});
@@ -132,7 +189,7 @@ teachersSearch.addEventListener('keyup', () => {
 			(data) =>
 				`<li class="${
 					data.id == gSelectedTeacher ? 'selected' : ''
-				}" data-set-id="${data.id}">${data.name}<br />${data.email}</li>`
+				}" data-set-id="${data.id}">${data.full_name}<br />${data.email}</li>`
 		)
 		.join('');
 	teachersOptions.innerHTML = li ? li : `<p>Ooops! Teacher not found!</p>`;
@@ -150,13 +207,13 @@ const priorityDropdownWrapper = document.querySelector(
 const prioritySelectBtn = document.querySelector('#prioritySelectBtn');
 const priorityOptions = document.querySelector('#priorityOptions');
 
-let priorities = ['Low', 'Medium', 'High'];
+let priorities = ['low', 'medium', 'high'];
 
 function refreshPriorityLiEventListeners() {
 	let priorityOptionsLi = document.querySelectorAll('#priorityOptions li');
 	for (let li of priorityOptionsLi) {
 		li.addEventListener('click', (e) => {
-			updatePriority(e);
+			updatePriority(e.target.childNodes[0].data);
 		});
 	}
 }
@@ -166,7 +223,7 @@ function addPriority(selectedPriority) {
 	for (let priority of priorities) {
 		let isSelected = '';
 		if (selectedPriority) {
-			if (priority === selectedPriority.childNodes[0].data) {
+			if (priority === selectedPriority) {
 				isSelected = 'selected';
 			}
 		}
@@ -177,10 +234,10 @@ function addPriority(selectedPriority) {
 }
 addPriority();
 
-function updatePriority(e) {
-	addPriority(e.target);
+function updatePriority(selected) {
+	addPriority(selected);
 	priorityDropdownWrapper.classList.remove('active');
-	prioritySelectBtn.firstElementChild.innerText = e.target.childNodes[0].data;
+	prioritySelectBtn.firstElementChild.innerText = selected;
 	prioritySelectBtn.setAttribute('data-selected', 'true');
 	refreshPriorityLiEventListeners();
 }
@@ -202,17 +259,37 @@ submitBtn.addEventListener('click', () => {
 		alert('Please fill all the fields!');
 		return;
 	}
-	let index = tasks.indexOf(tasks.find((task) => task.id == selectedTask.id));
 
-	tasks[index] = new Task(
-		selectedTask.id,
+	let updatedTask = {
 		title,
 		description,
-		teachers.find((teacher) => teacher.id == gSelectedTeacher),
-		prioritySelectBtn.firstElementChild.innerText
-	);
+		teacher_id: gSelectedTeacher,
+		priority: prioritySelectBtn.firstElementChild.innerText.toLowerCase(),
+		is_done: selectedTask.is_done,
+	};
 
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-	localStorage.setItem('selectedTask', JSON.stringify(tasks[index]));
+	let updateTaskRequest = new XMLHttpRequest();
+	updateTaskRequest.open(
+		'PUT',
+		`http://localhost:8000/api/tasks/${selectedTask.id}/`,
+		false
+	);
+	updateTaskRequest.withCredentials = true;
+	updateTaskRequest.setRequestHeader('Content-Type', 'application/json');
+	updateTaskRequest.onload = () => {
+		if (updateTaskRequest.status >= 200 && updateTaskRequest.status < 300) {
+			console.log('add task success');
+		} else {
+			console.log('add task failed');
+		}
+	};
+	updateTaskRequest.send(JSON.stringify(updatedTask));
+
+	window.addEventListener('beforeunload', (event) => {
+		if (updateTaskRequest.readyState == 4) return;
+		event.preventDefault();
+		event.returnValue = '';
+	});
+
 	window.location.reload();
 });

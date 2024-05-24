@@ -11,6 +11,10 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+.task__card > .task__property:first-of-type {
+	text-transform: capitalize;
+}
+
 .main {
 	padding: 24px 36px;
 }

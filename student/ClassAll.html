@@ -33,7 +33,7 @@
 
     <div class="maindiv" data-user-card-container>
       <p class="classes">Classes</p>
-      <button class="addclass" id="joinClassbtn">Join Class</button>
+      <button class="addclass" id="joinClassbtn" onclick="joinBtnOnClick()">Join Class</button>
 
       <hr color="black" width="800px" />
       <template class-template>
@@ -44,14 +44,14 @@
             alt=""
           />
           <div class="words">
-            <p class="line" data-header>class name</p>
-            <p class="line" data-body>Creater:</p>
+            <p class="line" data-header>Class Name: </p>
+            <p class="line" data-body>Teacher: </p>
           </div>
         </div>
       </template>
     </div>
     </div>  
-    <script src="/student/scripts/Class.js" type="module" defer></script>
+    <script src="/student/scripts/Class.js" defer></script>
     <script src="/scripts/DarkMode.js" defer></script>
   </body>
 

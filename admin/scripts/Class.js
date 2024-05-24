@@ -1,119 +1,214 @@
-import { Class } from "../../models/Class.js";
+let userCards = document.querySelector('[data-user-card-container]');
 
-const userCards = document.querySelector("[data-user-card-container]");
+var classrooms = [];
 
-// fetch("http://127.0.0.1:5500/res/JSON_test/Classes.json")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     for (const Class of data) {
-//       const card = classTemplate.content.cloneNode(true).children[0];
-//       const header = card.querySelector("[data-header]");
-//       const body = card.querySelector("[data-body]");
-//       header.textContent = Class.className;
-//       body.textContent = Class.creater;
-//       userCards.append(card);
-//     }
-//   });
+const getClasses = () => {
+	return new Promise((resolve, reject) => {
+		let classRequest = new XMLHttpRequest();
+		classRequest.open('GET', 'http://localhost:8000/api/classrooms/', true);
+		classRequest.withCredentials = true;
+		classRequest.onload = () => {
+			if (classRequest.status >= 200 && classRequest.status < 300) {
+				resolve(classRequest.responseText);
+			} else {
+				console.log('failed to fetch classes');
+				reject({
+					status: classRequest.status,
+					statusText: classRequest.statusText,
+				});
+			}
+		};
+		classRequest.send();
+	});
+};
 
+getClasses()
+	.then((data) => {
+		classrooms = JSON.parse(data);
+		for (const classroom of classrooms) {
+			userCards.innerHTML += `
+			<div class="class" data-set-id=${classroom.id}>
+			<img
+				class="classimg"
+				src="/assets/images/—Pngtree—school logo_6846798.png"
+				alt=""
+			/>
+			<div class="words">
+				<p class="line" data-header>Classroom Name: ${classroom.name}</p>
+				<p class="line" data-body>Teacher: ${classroom.teacher.full_name}</p>
+			</div>
+		</div>`;
 
-//constant data
-if(!localStorage.getItem('classesData')){
-let classes = [
-  new Class("math", "ahmed", 1),
-  new Class("english", "omar", 2),
-  new Class("history", "mazen", 3),
-];
-localStorage.setItem("classesData", JSON.stringify(classes));
-}
+			//used to make cards navigatble
+		}
+		let classCards = document.querySelectorAll('.class');
+		console.log(classCards);
+		for (let classobj of classCards) {
+			classobj.addEventListener('click', () => {
+				let id = classobj.getAttribute('data-set-id');
+				sessionStorage.setItem('classroomID', id);
+				window.location.href = 'Admin-announcement.html';
+			});
+		}
+	})
+	.catch((error) => {
+		console.log(error);
+	});
 
-const storedData = JSON.parse(localStorage.getItem("classesData"));
+const createClassForm = document.getElementById('createClassForm');
 
-for (const Class of storedData) {
+const createrInput = document.getElementById('classCreater');
 
-  userCards.innerHTML+=`
-  <div class="class" data-set-id=${Class.id}>
-  <img
-    class="classimg"
-    src="/assets/images/—Pngtree—school logo_6846798.png"
-    alt=""
-  />
-  <div class="words">
-    <p class="line" data-header>class name: ${Class.name}</p>
-    <p class="line" data-body>Creater: ${Class.creater}</p>
-  </div>
-</div>`
+createClassForm.addEventListener('submit', (event) => {
+	// Prevent default form submission
+	event.preventDefault();
+	const classNameInput = document.getElementById('className');
+	const name = classNameInput.value.trim();
+	const teacher_id = gSelectedTeacher;
+	let newClassroom = {
+		name,
+		teacher_id,
+	};
 
-
-
-//used to make cards navigatble
-let classCards = document.querySelectorAll('.class');
-
-for (let classobj of classCards) {
-  let classes = JSON.parse(localStorage.getItem('classesData'));
-  classobj.addEventListener('click', () => {
-    let id = classobj.getAttribute('data-set-id');
-    localStorage.setItem(
-      'selectedClass',
-      JSON.stringify(classes.find((classobj) => classobj.id == id))
-    );
-    window.location.href = 'Admin-Announcement.html'; 
-  });
-  }
-}
-
-
-
-const createClassForm = document.getElementById("createClassForm");
-const classNameInput = document.getElementById("className");
-const createrInput = document.getElementById("classCreater");
-
-createClassForm.addEventListener("submit", (event) => {
-  
-  // Prevent default form submission
-  event.preventDefault(); 
-  const className = classNameInput.value;
-  const creater = createrInput.value;
-  let classes =JSON.parse(localStorage.getItem("classesData"));
-  const newClass = new Class(className, creater,classes.length);
-  classes.push(newClass);
-  localStorage.setItem("classesData", JSON.stringify(classes));
-
-  //append the new class to the div
-  userCards.innerHTML+=`
-  <div class="class" data-set-id=${Class.id}>
-  <img
-    class="classimg"
-    src="/assets/images/—Pngtree—school logo_6846798.png"
-    alt=""
-  />
-  <div class="words">
-    <p class="line" data-header>class name: ${newClass.name}</p>
-    <p class="line" data-body>Creater: ${newClass.creater}</p>
-  </div>
-</div>`
-
-  //clean up after creating class
-  closePopUp();
-  classNameInput.value = "";
-  createrInput.value = "";
+	let createClassRequest = new XMLHttpRequest();
+	createClassRequest.open(
+		'POST',
+		'http://localhost:8000/api/classrooms/',
+		true
+	);
+	createClassRequest.setRequestHeader('Content-Type', 'application/json');
+	createClassRequest.withCredentials = true;
+	createClassRequest.onload = () => {
+		if (createClassRequest.status >= 200 && createClassRequest.status < 300) {
+			console.log('class created');
+			location.reload();
+		} else {
+			console.log('failed to create class');
+		}
+	};
+	createClassRequest.send(JSON.stringify(newClassroom));
 });
 
-function closePopUp(){
-  let x = document.getElementById("addClass");
-  x.style.opacity = "0%";
-  x.style.visibility = "hidden";
+function closePopUp() {
+	let x = document.getElementById('addClass');
+	x.style.opacity = '0%';
+	x.style.visibility = 'hidden';
 }
 
-let addclassbtn = document.getElementById("addClassbtn");
+let addclassbtn = document.getElementById('addClassbtn');
 
-addclassbtn.addEventListener("click", () => {
-  let x = document.getElementById("addClass");
-  x.style.opacity = "100%";
-  x.style.visibility = "visible";
+var teachers = [];
+
+const getTeachersFromAPI = () => {
+	return new Promise((resolve, reject) => {
+		let teachersRequest = new XMLHttpRequest();
+		teachersRequest.open(
+			'GET',
+			'http://localhost:8000/api/users/teacher/',
+			true
+		);
+		teachersRequest.withCredentials = true;
+		teachersRequest.onload = () => {
+			if (teachersRequest.status >= 200) {
+				console.log('get teachers success');
+				resolve(teachersRequest.responseText);
+			} else {
+				reject({
+					status: teachersRequest.status,
+					statusText: teachersRequest.statusText,
+				});
+				console.log('get teachers failed');
+			}
+		};
+		teachersRequest.send();
+	});
+};
+
+let addClassBtnOnClick = () => {
+	getTeachersFromAPI().then((data) => {
+		teachers = JSON.parse(data);
+		addTeacher();
+	});
+	let x = document.getElementById('addClass');
+	x.style.opacity = '100%';
+	x.style.visibility = 'visible';
+};
+
+let closepopupbtn = document.getElementById('closePopupbtn');
+
+closepopupbtn.addEventListener('click', () => {
+	closePopUp();
 });
 
-let closepopupbtn = document.getElementById("closePopupbtn");
+const teachersDropdownWrapper = document.querySelector(
+	'#teachersDropdownWrapper'
+);
+const teachersSelectBtn = document.querySelector('#teachersSelectBtn');
+const teachersOptions = document.querySelector('#teachersOptions');
+const teachersSearch = document.querySelector('#teachersSearch');
 
-closepopupbtn.addEventListener("click", () => {;
-  closePopUp();
+function refreshTeachersLiEventListeners() {
+	let teachersOptionsLi = document.querySelectorAll('#teachersOptions li');
+	for (let li of teachersOptionsLi) {
+		li.addEventListener('click', () => {
+			updateTeacher(li.getAttribute('data-set-id'));
+		});
+	}
+}
+
+function updateTeacher(id) {
+	teachersSearch.value = '';
+	addTeacher(id);
+	teachersDropdownWrapper.classList.remove('active');
+	teachersSelectBtn.firstElementChild.innerText = teachers.find(
+		(teacher) => teacher.id == id
+	).full_name;
+	teachersSelectBtn.setAttribute('data-set-id', id);
+	teachersSelectBtn.setAttribute('data-selected', 'true');
+}
+
+let gSelectedTeacher = null;
+
+function addTeacher(selectedTeacher) {
+	teachersOptions.innerHTML = '';
+	for (let teacher of teachers) {
+		let isSelected = '';
+		if (selectedTeacher) {
+			if (teacher.id == selectedTeacher) {
+				isSelected = 'selected';
+				gSelectedTeacher = teacher.id;
+			}
+		}
+		let li = `<li data-set-id="${teacher.id}" class="${isSelected}">${teacher.full_name}<br />${teacher.email}</li>`;
+		teachersOptions.insertAdjacentHTML('beforeend', li);
+		refreshTeachersLiEventListeners();
+	}
+}
+
+addTeacher();
+
+teachersSearch.addEventListener('keyup', () => {
+	let filteredTeachers = [];
+	let searchedValue = teachersSearch.value.toLowerCase();
+	filteredTeachers = teachers.filter((teacher) => {
+		return (
+			teacher.full_name.toLowerCase().startsWith(searchedValue) ||
+			teacher.email.toLowerCase().startsWith(searchedValue)
+		);
+	});
+	let li = filteredTeachers
+		.map(
+			(data) =>
+				`<li class="${
+					data.id == gSelectedTeacher ? 'selected' : ''
+				}" data-set-id="${data.id}">${data.full_name}<br />${data.email}</li>`
+		)
+		.join('');
+	teachersOptions.innerHTML = li ? li : `<p>Ooops! Teacher not found!</p>`;
+	refreshTeachersLiEventListeners();
+});
+
+teachersSelectBtn.addEventListener('click', () => {
+	teachersDropdownWrapper.classList.toggle('active');
+	refreshTeachersLiEventListeners();
 });

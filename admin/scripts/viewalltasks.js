@@ -1,15 +1,54 @@
-import { Task } from '../../models/task.js';
+var tasks = [];
+var sectionTasks = [];
 
-let taskContainer = document.querySelector('#tasks__container');
+const login = () => {
+	//login
+	let loginRequest = new XMLHttpRequest();
+	loginRequest.open('POST', 'http://localhost:8000/api/auth/login/', false);
+	loginRequest.withCredentials = true;
+	loginRequest.setRequestHeader('Content-Type', 'application/json');
+	loginRequest.onload = () => {
+		if (loginRequest.status == 200) {
+			console.log('login success');
+		} else {
+			console.log('login failed');
+		}
+	};
+	loginRequest.send(
+		JSON.stringify({ email: 'mahmoudmnael@gmail.com', password: '1234' })
+	);
+};
 
-let storageTasks = JSON.parse(localStorage.getItem('tasks'));
-let tasks = [];
+const getTasksFromAPI = () => {
+	login();
+	//get tasks
+	return new Promise((resolve, reject) => {
+		let tasksRequest = new XMLHttpRequest();
+		tasksRequest.open('GET', 'http://localhost:8000/api/tasks/', true);
+		tasksRequest.withCredentials = true;
+		tasksRequest.onload = () => {
+			if (tasksRequest.status >= 200) {
+				console.log('get tasks success');
+				resolve(tasksRequest.responseText);
+			} else {
+				console.log('get tasks failed');
+				reject({
+					status: tasksRequest.status,
+					statusText: tasksRequest.statusText,
+				});
+			}
+		};
+		tasksRequest.send();
+	});
+};
 
-for (let task of storageTasks) {
-	tasks.push(Task.constructObject(task));
-}
-
-let sectionTasks = tasks.filter((task) => !task.completed);
+window.addEventListener('load', () => {
+	getTasksFromAPI().then((data) => {
+		tasks = JSON.parse(data);
+		sectionTasks = tasks.filter((task) => !task.is_done);
+		renderTasks(sectionTasks);
+	});
+});
 
 let pendingTasksElement = document.querySelector('#pendingTasks');
 let completedTasksElement = document.querySelector('#completedTasks');
@@ -19,7 +58,7 @@ pendingTasksElement.addEventListener('click', () => {
 	} else {
 		pendingTasksElement.classList.add('section__active');
 		completedTasksElement.classList.remove('section__active');
-		sectionTasks = tasks.filter((task) => !task.completed);
+		sectionTasks = tasks.filter((task) => !task.is_done);
 		renderTasks(sectionTasks);
 	}
 });
@@ -30,7 +69,7 @@ completedTasksElement.addEventListener('click', () => {
 	} else {
 		completedTasksElement.classList.add('section__active');
 		pendingTasksElement.classList.remove('section__active');
-		sectionTasks = tasks.filter((task) => task.completed);
+		sectionTasks = tasks.filter((task) => task.is_done);
 		renderTasks(sectionTasks);
 	}
 });
@@ -46,7 +85,18 @@ searchInput.addEventListener('keyup', () => {
 	renderTasks(filteredTasks);
 });
 
+function getPriorityColor(task) {
+	if (task.priority === 'low') {
+		return 'safe';
+	} else if (task.priority === 'medium') {
+		return 'warning';
+	} else {
+		return 'danger';
+	}
+}
+
 function renderTasks(pTasks) {
+	let taskContainer = document.querySelector('#tasks__container');
 	taskContainer.innerHTML = '';
 	for (let task of pTasks) {
 		taskContainer.innerHTML += `
@@ -58,13 +108,11 @@ function renderTasks(pTasks) {
 	
 		<div class="task__property">
 			<i class="fa-regular fa-flag"></i>
-			<p>Priority: <span class="${task.getPriorityColor()}">${
-			task.priority
-		}</span></p>
+			<p>Priority: <span class="${getPriorityColor(task)}">${task.priority}</span></p>
 		</div>
 		<div class="task__property">
 			<i class="fa-regular fa-calendar-days"></i>
-			<p>Date: <span>${task.createdAt}</span></p>
+			<p>Date: <span>${task.created_at}</span></p>
 		</div>
 	</div>
 		`;
@@ -74,14 +122,39 @@ function renderTasks(pTasks) {
 	for (let card of taskCards) {
 		card.addEventListener('click', () => {
 			let id = card.getAttribute('data-set-id');
-			localStorage.setItem(
-				'selectedTask',
-				JSON.stringify(tasks.find((task) => task.id == id))
-			);
+			sessionStorage.setItem('taskID', id);
 			window.location.href = './viewtaskdetails.html';
 		});
 	}
 }
+
+// POPUP FUNCTIONALITY
+var teachers = [];
+
+const getTeachersFromAPI = () => {
+	return new Promise((resolve, reject) => {
+		let teachersRequest = new XMLHttpRequest();
+		teachersRequest.open(
+			'GET',
+			'http://localhost:8000/api/users/teacher/',
+			true
+		);
+		teachersRequest.withCredentials = true;
+		teachersRequest.onload = () => {
+			if (teachersRequest.status >= 200) {
+				console.log('get teachers success');
+				resolve(teachersRequest.responseText);
+			} else {
+				reject({
+					status: teachersRequest.status,
+					statusText: teachersRequest.statusText,
+				});
+				console.log('get teachers failed');
+			}
+		};
+		teachersRequest.send();
+	});
+};
 
 let popup = document.querySelector('#popup');
 let addBtn = document.querySelector('.btn-add');
@@ -90,6 +163,11 @@ let cancelBtn = document.querySelector('#cancelBtn');
 addBtn.addEventListener('click', () => {
 	popup.classList.add('popup__active');
 	document.body.style.overflow = 'hidden';
+
+	getTeachersFromAPI().then((data) => {
+		teachers = JSON.parse(data);
+		addTeacher();
+	});
 });
 
 cancelBtn.addEventListener('click', () => {
@@ -113,15 +191,13 @@ function refreshTeachersLiEventListeners() {
 	}
 }
 
-let teachers = JSON.parse(localStorage.getItem('teachers'));
-
 function updateTeacher(id) {
 	teachersSearch.value = '';
 	addTeacher(id);
 	teachersDropdownWrapper.classList.remove('active');
 	teachersSelectBtn.firstElementChild.innerText = teachers.find(
 		(teacher) => teacher.id == id
-	).name;
+	).full_name;
 	teachersSelectBtn.setAttribute('data-set-id', id);
 	teachersSelectBtn.setAttribute('data-selected', 'true');
 }
@@ -138,7 +214,7 @@ function addTeacher(selectedTeacher) {
 				gSelectedTeacher = teacher.id;
 			}
 		}
-		let li = `<li data-set-id="${teacher.id}" class="${isSelected}">${teacher.name}<br />${teacher.email}</li>`;
+		let li = `<li data-set-id="${teacher.id}" class="${isSelected}">${teacher.full_name}<br />${teacher.email}</li>`;
 		teachersOptions.insertAdjacentHTML('beforeend', li);
 		refreshTeachersLiEventListeners();
 	}
@@ -151,7 +227,7 @@ teachersSearch.addEventListener('keyup', () => {
 	let searchedValue = teachersSearch.value.toLowerCase();
 	filteredTeachers = teachers.filter((teacher) => {
 		return (
-			teacher.name.toLowerCase().startsWith(searchedValue) ||
+			teacher.full_name.toLowerCase().startsWith(searchedValue) ||
 			teacher.email.toLowerCase().startsWith(searchedValue)
 		);
 	});
@@ -160,7 +236,7 @@ teachersSearch.addEventListener('keyup', () => {
 			(data) =>
 				`<li class="${
 					data.id == gSelectedTeacher ? 'selected' : ''
-				}" data-set-id="${data.id}">${data.name}<br />${data.email}</li>`
+				}" data-set-id="${data.id}">${data.full_name}<br />${data.email}</li>`
 		)
 		.join('');
 	teachersOptions.innerHTML = li ? li : `<p>Ooops! Teacher not found!</p>`;
@@ -230,20 +306,33 @@ submitBtn.addEventListener('click', () => {
 		alert('Please fill all the fields!');
 		return;
 	}
-	let newId = tasks[tasks.length - 1].id + 1;
-	tasks.push(
-		new Task(
-			newId,
-			title,
-			description,
-			teachers.find(
-				(teacher) => teacher.id == teachersSelectBtn.getAttribute('data-set-id')
-			),
-			prioritySelectBtn.firstElementChild.innerText
-		)
-	);
+	let newTask = {
+		title,
+		description,
+		teacher_id: teachersSelectBtn.getAttribute('data-set-id'),
+		priority: prioritySelectBtn.firstElementChild.innerText.toLowerCase(),
+	};
 
-	console.log(tasks);
-	localStorage.setItem('tasks', JSON.stringify(tasks));
+	console.log(newTask);
+
+	let addTaskRequest = new XMLHttpRequest();
+	addTaskRequest.open('POST', 'http://localhost:8000/api/tasks/', false);
+	addTaskRequest.withCredentials = true;
+	addTaskRequest.setRequestHeader('Content-Type', 'application/json');
+	addTaskRequest.onload = () => {
+		if (addTaskRequest.status == 201) {
+			console.log('add task success');
+		} else {
+			console.log('add task failed');
+		}
+	};
+	addTaskRequest.send(JSON.stringify(newTask));
+
+	window.addEventListener('beforeunload', (event) => {
+		if (addTaskRequest.readyState == 4) return;
+		event.preventDefault();
+		event.returnValue = '';
+	});
+
 	window.location.reload();
 });
