@@ -44,18 +44,6 @@ decline.addEventListener('click', () => {
 	box_2.style.display = 'none';
 });
 
-let colorModeBtn = document.querySelector('#colorModeBtn');
-let colorModeIcon = document.querySelector('#colorModeIcon');
-
-colorModeBtn.addEventListener('click', () => {
-	if (colorModeIcon.classList.contains('fa-moon')) {
-		colorModeIcon.classList.remove('fa-moon');
-		colorModeIcon.classList.add('fa-sun');
-	} else {
-		colorModeIcon.classList.remove('fa-sun');
-		colorModeIcon.classList.add('fa-moon');
-	}
-});
 let save = document.getElementById('Accept');
 save.addEventListener('click', () => {
 	let titleContent = document.getElementById('Title');
@@ -95,7 +83,7 @@ function getAnnouncments(class_id) {
 	let request = new XMLHttpRequest();
 	request.open(
 		'GET',
-		'http://127.0.0.1:8000/api/classrooms/' + class_id + '/announcements/'
+		'http://localhost:8000/api/classrooms/' + class_id + '/announcements/'
 	); //put the port
 	request.withCredentials = true;
 	request.send();
@@ -134,10 +122,11 @@ function editAnnouncment(id) {
 	reqGET = new XMLHttpRequest();
 	reqGET.open(
 		'GET',
-		'http://127.0.0.1:8000/api/classrooms/' +
+		'http://localhost:8000/api/classrooms/' +
 			classroomID +
 			'/announcements/' +
-			id
+			id +
+			'/'
 	); //put port number
 	reqGET.withCredentials = true;
 	reqGET.send();
@@ -152,17 +141,17 @@ function editAnnouncment(id) {
 		reqPUT = new XMLHttpRequest();
 		reqPUT.open(
 			'PUT',
-			'http://127.0.0.1:8000/api/classrooms/' +
+			'http://localhost:8000/api/classrooms/' +
 				classroomID +
 				'/announcements/' +
-				id
+				id +
+				'/'
 		);
 		reqPUT.withCredentials = true;
 		reqPUT.setRequestHeader('Content-Type', 'application/json');
 		let newdata = {
 			title: titleAnnouncment.value,
 			content: contentAnnouncment.value,
-			created_at: dateAnnouncment.value,
 		};
 		reqPUT.send(JSON.stringify(newdata));
 
@@ -177,7 +166,7 @@ save.addEventListener('click', function () {
 	reqPOST = new XMLHttpRequest();
 	reqPOST.open(
 		'POST',
-		'http://127.0.0.1:8000/api/classrooms/' + classroomID + '/announcements/'
+		'http://localhost:8000/api/classrooms/' + classroomID + '/announcements/'
 	);
 	reqPOST.setRequestHeader('Content-Type', 'application/json');
 	reqPOST.withCredentials = true;
@@ -185,7 +174,6 @@ save.addEventListener('click', function () {
 	let data = {
 		title: title.value,
 		content: content2.value,
-		created_at: date.value,
 	};
 	reqPOST.send(JSON.stringify(data));
 	console.log(data);
@@ -251,10 +239,11 @@ function deleteAnnouncment(id) {
 		req = new XMLHttpRequest();
 		req.open(
 			'DELETE',
-			'http://127.0.0.1:8000/api/classrooms/' +
+			'http://localhost:8000/api/classrooms/' +
 				classroomID +
 				'/announcements/' +
-				id
+				id +
+				'/'
 		);
 		req.withCredentials = true;
 		req.send();

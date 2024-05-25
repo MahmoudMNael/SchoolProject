@@ -1,8 +1,7 @@
 /* Pending Account Detail Get Data */
 let req = new XMLHttpRequest();
 let body = document.getElementById('pendingAccountsBody');
-req.open('GET', 'http://127.0.0.1:8000/api/auth/pending/', false);
-req.setRequestHeader('Content-Type', 'application/json');
+req.open('GET', 'http://localhost:8000/api/auth/pending/', false);
 req.withCredentials = true;
 req.addEventListener('load', function () {
 	if (req.status === 200) {
@@ -45,7 +44,7 @@ req.send();
 /* Control Panel */
 let control_panel = document.getElementById('control_panel');
 let control = new XMLHttpRequest();
-control.open('GET', 'http://127.0.0.1:8000/api/auth/pending/', false);
+control.open('GET', 'http://localhost:8000/api/auth/pending/', false);
 control.setRequestHeader('Content-Type', 'application/json');
 control.withCredentials = true;
 control.addEventListener('load', function () {
@@ -80,7 +79,7 @@ for (let element of accept) {
 		let approve = new XMLHttpRequest();
 		approve.open(
 			'POST',
-			'http://127.0.0.1:8000/api/auth/pending/' + id + '/',
+			'http://localhost:8000/api/auth/pending/' + id + '/',
 			true
 		);
 		approve.setRequestHeader('Content-Type', 'application/json');
@@ -96,7 +95,7 @@ for (const element of decline) {
 		let rejected = new XMLHttpRequest();
 		rejected.open(
 			'DELETE',
-			'http://127.0.0.1:8000/api/auth/pending/' + id + '/',
+			'http://localhost:8000/api/auth/pending/' + id + '/',
 			true
 		);
 		rejected.setRequestHeader('Content-Type', 'application/json');

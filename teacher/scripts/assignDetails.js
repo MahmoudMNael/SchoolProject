@@ -6,7 +6,7 @@ let com = new XMLHttpRequest();
 let comment = document.getElementById('comment_section');
 com.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
 	true
 );
 com.setRequestHeader('Content-Type', 'application/json');
@@ -40,7 +40,7 @@ let req = new XMLHttpRequest();
 let details = document.getElementById('Header');
 req.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
 	false
 );
 req.setRequestHeader('Content-Type', 'application/json');
@@ -68,7 +68,7 @@ req.send();
 let content = document.getElementById('Content');
 req.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
 	true
 );
 req.withCredentials = true;
@@ -93,7 +93,7 @@ let req2 = new XMLHttpRequest();
 let rightSide = document.getElementById('rightSide');
 req2.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/submissions/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/submissions/`,
 	true
 );
 req2.withCredentials = true;
@@ -108,7 +108,7 @@ req2.addEventListener('load', function () {
         <img src="../Res/profile-user.png" alt="">
         ${res[i].created_by.full_name}:
       </div>
-      <a id="submitLink" href="${res[i].link}">${res[i].link}</a>
+      <a id="submitLink" target="_blank" href="${res[i].link}">${res[i].link}</a>
     </div>
     `;
 	} else {
@@ -299,7 +299,7 @@ const sendDataComment = () => {
 	if (content) {
 		sendHttpRequest(
 			'POST',
-			`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
+			`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
 			{
 				content,
 			}

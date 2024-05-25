@@ -6,7 +6,7 @@ let com = new XMLHttpRequest();
 let comment = document.getElementById('comment_section');
 com.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
 	true
 );
 com.setRequestHeader('Content-Type', 'application/json');
@@ -40,7 +40,7 @@ let req = new XMLHttpRequest();
 let details = document.getElementById('Header');
 req.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
 	false
 );
 req.setRequestHeader('Content-Type', 'application/json');
@@ -68,7 +68,7 @@ req.send();
 let content = document.getElementById('Content');
 req.open(
 	'GET',
-	`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
+	`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/`,
 	true
 );
 req.withCredentials = true;
@@ -216,12 +216,12 @@ save2.addEventListener('click', () => {
 	}
 });
 
-let logoutPopup = document.getElementById('logout');
-logoutPopup.addEventListener('click', () => {
-	if (confirm('Are You sure You Want To Logout') == 1) {
-		window.location.href = '#';
-	}
-});
+// let logoutPopup = document.getElementById('logout');
+// logoutPopup.addEventListener('click', () => {
+// 	if (confirm('Are You sure You Want To Logout') == 1) {
+// 		window.location.href = '#';
+// 	}
+// });
 /* End of Buttons */
 
 /* Send Comments Here */
@@ -253,7 +253,7 @@ const sendDataComment = () => {
 	if (content) {
 		sendHttpRequest(
 			'POST',
-			`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
+			`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/comments/`,
 			{
 				content,
 			}
@@ -268,7 +268,7 @@ const sendDataLink = () => {
 	if (link) {
 		sendHttpRequest(
 			'POST',
-			`http://127.0.0.1:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/submissions/`,
+			`http://localhost:8000/api/classrooms/${classroom_id}/assignments/${assignment_id}/submissions/`,
 			{
 				link,
 			}

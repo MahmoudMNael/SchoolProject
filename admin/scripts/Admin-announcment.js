@@ -5,7 +5,7 @@ function getAnnouncments(class_id) {
 	let request = new XMLHttpRequest();
 	request.open(
 		'GET',
-		'http://127.0.0.1:8000/api/classrooms/' + class_id + '/announcements/'
+		'http://localhost:8000/api/classrooms/' + class_id + '/announcements/'
 	); //put the port
 	request.withCredentials = true;
 	request.send();

@@ -4,7 +4,7 @@ function getAssignments(class_id) {
 	let request = new XMLHttpRequest();
 	request.open(
 		'GET',
-		'http://127.0.0.1:8000/api/classrooms/' + class_id + '/assignments/'
+		'http://localhost:8000/api/classrooms/' + class_id + '/assignments/'
 	); //put the port
 	request.withCredentials = true;
 	request.send();
@@ -26,5 +26,6 @@ function getAssignments(class_id) {
 getAssignments(classroomID); // put the active class
 let anchorOnClick = (id) => {
 	sessionStorage.setItem('assignmentID', id);
+	window.location.href = 'View_Assignment.html';
 };
 //end

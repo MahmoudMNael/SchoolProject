@@ -1,26 +1,7 @@
 var tasks = [];
 var sectionTasks = [];
 
-const login = () => {
-	//login
-	let loginRequest = new XMLHttpRequest();
-	loginRequest.open('POST', 'http://localhost:8000/api/auth/login/', false);
-	loginRequest.withCredentials = true;
-	loginRequest.setRequestHeader('Content-Type', 'application/json');
-	loginRequest.onload = () => {
-		if (loginRequest.status == 200) {
-			console.log('login success');
-		} else {
-			console.log('login failed');
-		}
-	};
-	loginRequest.send(
-		JSON.stringify({ email: 'teacher9@gmail.com', password: '1234' })
-	);
-};
-
 const getTasksFromAPI = () => {
-	login();
 	//get tasks
 	return new Promise((resolve, reject) => {
 		let tasksRequest = new XMLHttpRequest();

@@ -44,11 +44,11 @@ searchresult.addEventListener('keyup', function () {
 	TeacherListEditor.innerHTML = '';
 	StudentListEditor.innerHTML = '';
 	moddata.students.forEach((item) => {
-		if (item.full_name.toLowerCase().includes(search)) {
+		if (item.full_name.toLowerCase().startsWith(search)) {
 			StudentListEditor.innerHTML += `<li><img src="../assets/images/simple_profile_photo.png" alt="profile photo">${item.full_name}</li>`;
 		}
 	});
-	if (moddata.teacher.full_name.toLowerCase().includes(search)) {
+	if (moddata.teacher.full_name.toLowerCase().startsWith(search)) {
 		TeacherListEditor.innerHTML += `<li><img src="../assets/images/simple_profile_photo.png" alt="profile photo">${moddata.teacher.full_name}</li>`;
 	}
 });

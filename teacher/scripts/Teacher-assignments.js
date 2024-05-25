@@ -46,9 +46,6 @@ decline.addEventListener('click', () => {
 	box_2.style.display = 'none';
 });
 
-let colorModeBtn = document.querySelector('#colorModeBtn');
-let colorModeIcon = document.querySelector('#colorModeIcon');
-
 let save = document.getElementById('Accept');
 save.addEventListener('click', () => {
 	let titleContent = document.getElementById('Title');
@@ -90,7 +87,7 @@ save.addEventListener('click', function addAssignments() {
 	let request = new XMLHttpRequest();
 	request.open(
 		'POST',
-		'http://127.0.0.1:8000/api/classrooms/' + classroomID + '/assignments/'
+		'http://localhost:8000/api/classrooms/' + classroomID + '/assignments/'
 	); // put the port
 	request.setRequestHeader('Content-Type', 'application/json');
 	request.withCredentials = true;
@@ -112,7 +109,7 @@ function getAssignments(class_id) {
 	let request = new XMLHttpRequest();
 	request.open(
 		'GET',
-		'http://127.0.0.1:8000/api/classrooms/' + class_id + '/assignments/'
+		'http://localhost:8000/api/classrooms/' + class_id + '/assignments/'
 	); //put the port
 	request.withCredentials = true;
 	request.send();
