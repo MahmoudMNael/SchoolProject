@@ -165,30 +165,36 @@ img{
   display: inline-block;
 }
 
-/* .edit-btn{
-    width: 90px;
-    background-color:#2f3e46;
-    color: white;
-    height: 30px;
-    margin: 5px 20px;
+.edit-btn{
+  width: 90px;
+  background-color:#52796F;
+  color: white;
+  height: 30px;
+  margin-left: calc(45% - 90px);
+  border-radius: 50px;
+  border: none;
+  font-size: 20px;
 }
 
 .delete-btn{
-    width: 90px;
-    background-color: #2f3e46;
-    color: white;
-    height: 30px;
-    margin: 5px 20px;
-} */
+  width: 90px;
+  background-color: #52796F;
+  color: white;
+  height: 30px;
+  margin-left: 10%;
+  border-radius: 50px;
+  border: none;
+  font-size: 20px;
+} 
 
-/* .delete-btn:hover{
+ .delete-btn:hover{
     cursor: pointer;
     color:#84a98c;
 }
 .edit-btn:hover{
     cursor: pointer;
     color: #84a98c;
-} */
+}
 
 
 .assi-txt a:hover{
@@ -385,6 +391,169 @@ label {
   width: 150px;
   margin-left: 10px;
   margin-top: -5px;
+}
+
+.verification {
+  color: red;
+}
+#Container-2 {
+  border: solid 1px black;
+  border-radius: 20px;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc((100%/2) - 250px);
+  margin-left: calc((100%/2) - 400px);
+  width: 800px;
+  height: 500px;
+  padding: 20px;
+}
+
+#Title-2 {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Title-2:focus {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Title-2:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Content-edit {
+  width: 760px;
+  height: 30px;
+  margin-bottom: 20px;
+  padding:5px;
+  border-style: none;
+  border-bottom: solid;
+  background-color: #F8F9FA;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow-y: hidden;
+}
+
+#Content-edit:focus{
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+#Content-edit:hover {
+  outline: none;
+  border-bottom: solid 3px #52796F;
+  filter: brightness(95%);
+  transition-duration: 0.5s;
+}
+
+label {
+  position: absolute;
+  top: 84px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+#label2-edit {
+  position: absolute;
+  top: 175px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+}
+
+
+.Focusing + #label1-edit{
+  top: 60px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+.Focusing2 + #label2-edit {
+  top: 132px;
+  transition-duration: 0.5s;
+  font-size: smaller;
+  font-weight: 1px;
+  color: #52796F;
+}
+
+
+#Date-2 {
+  display: block;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+::-webkit-calendar-picker-indicator{
+  background-color:#CAD2C5;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.Buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+#Accept-2 {
+  border: solid;
+  background-color:#52796F;
+  color: white;
+  border-radius : 50px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Accept-2:hover {
+  background-color: #CAD2C5;
+  transition-duration: 0.5s;
+}
+
+#Decline-2 {
+  border: solid;
+  background-color: #52796F;
+  color: white;
+  border-radius: 50px;
+  font-size: 20px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#Decline-2:hover {
+  background-color: #CAD2C5;
+  transition-duration: 0.5s;
 }
 
 .verification {

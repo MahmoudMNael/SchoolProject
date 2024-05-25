@@ -73,6 +73,33 @@
 			</div>
 		</div>
 		<!-- End of pop up-->
+		<div id="Container-2">
+			<h2>Enter Details Here</h2>
+			<textarea
+				name="Title"
+				id="Title-2"
+				placeholder="."
+				class="Focusing"
+			></textarea>
+			<label for="Title" id="label1-edit">Title</label>
+			<textarea name="Content" id="Content-edit" class="Focusing2"></textarea>
+			<label for="Content" id="label2-edit">Type Here</label>
+			<h4>Due Time</h4>
+			<input type="date" name="Date" id="Date-2" />
+			<div class="Buttons">
+				<div id="edit_btn">
+					<input type="button" value="Edit" id="Accept-2" />
+				</div>
+				<div id="delete_btn">
+					<input
+						type="button"
+						value="Cancel"
+						id="Decline-2"
+						onclick="cancelPopup()"
+					/>
+				</div>
+			</div>
+		</div>
 		<script src="scripts/Teacher-assignments.js"></script>
 		<script src="../scripts/navbar.js"></script>
 	</body>

@@ -123,8 +123,11 @@ function getAssignments(class_id) {
         </div>
         <p class="date">${i.created_at}</p>
         <p class="assi-content">${i.content}</p>
+		<br>
+		<button type="button" class="edit-btn" onclick="editAssignments(${i.id})"> edit</button>
+		<button type="button" class="delete-btn" onclick="deleteAssignments(${i.id})"> delete </button>
         </div>
-      `;
+    `;
 		}
 	});
 }
@@ -136,3 +139,62 @@ let anchorOnClick = (id) => {
 };
 
 //end
+// put function
+let titleAssignment = document.getElementById('Title-2');
+let contentAssignment = document.getElementById('Content-edit');
+let dateAssignment =document.getElementById("Date-2");
+
+function editAssignments(id){
+  let blur = document.getElementById('blur');
+  blur.classList.toggle('active');
+  let box_2 = document.getElementById('Container-2');
+  box_2.style.display = "block";
+  reqGET=new XMLHttpRequest();
+  reqGET.open('GET','http://localhost:8000/api/classrooms/'+classroomID+'/assignments/' + id +'/');//put port number
+  reqGET.withCredentials=true;
+  reqGET.send();
+  reqGET.addEventListener('load',function (){
+    let data= JSON.parse(reqGET.responseText);
+    titleAssignment.value=data.title;
+    contentAssignment.value=data.content;
+    dateAssignment.value=data.created_at;
+  })
+  let edit=document.getElementById('Accept-2');
+  edit.addEventListener('click',function(){
+    reqPUT=new XMLHttpRequest();
+    reqPUT.open('PUT','http://localhost:8000/api/classrooms/'+classroomID+'/assignments/' + id +'/');
+    reqPUT.withCredentials=true;
+    reqPUT.setRequestHeader('Content-Type','application/json');
+      let newdata={
+      title:titleAssignment.value,
+      content:contentAssignment.value,
+      due_date:dateAssignment.value,
+    }
+    reqPUT.send(JSON.stringify(newdata));
+  })
+  
+}
+
+
+//end 
+
+
+
+// delete function
+function deleteAssignments(id){
+  if(confirm("Are you sure you need to delete this announcment ?")){
+    req=new XMLHttpRequest();
+    req.open('DELETE','http://localhost:8000/api/classrooms/'+classroomID+'/assignments/' + id+'/');
+    req.withCredentials=true;
+    req.send();
+  }
+}
+
+// end
+
+function cancelPopup() {
+	let blur = document.getElementById('blur');
+	blur.classList.toggle('active');
+	let box_2 = document.getElementById('Container-2');
+	box_2.style.display = 'none';
+}
