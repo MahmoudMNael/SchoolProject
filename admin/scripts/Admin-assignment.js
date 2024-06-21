@@ -17,7 +17,7 @@ function getAssignments(class_id) {
 			assiTxt.innerHTML += `<div class="assi-txt2" data-set-id="${i.id}">
         <img src="/assets/images/simple_profile_photo.png">
         <div class="username" >
-            <a onclick="anchorOnClick(${i.id})" id="address">${i.title}</a> //put href of assignments details
+            <a onclick="anchorOnClick(${i.id})" id="address">${i.title}</a>
         </div>
         <p class="date">${i.created_at}</p>
         <p class="assi-content">${i.content}</p>

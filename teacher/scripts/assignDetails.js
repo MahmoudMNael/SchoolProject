@@ -208,13 +208,6 @@ save.addEventListener('click', () => {
 	}
 });
 
-let logoutPopup = document.getElementById('logout');
-logoutPopup.addEventListener('click', () => {
-	if (confirm('Are You sure You Want To Logout') == 1) {
-		window.location.href = '#';
-	}
-});
-
 let toggle2 = document.getElementById('cmnt_btn');
 toggle2.addEventListener('click', () => {
 	let blur = document.getElementById('blur');
